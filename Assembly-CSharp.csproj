@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{1D1DF19C-A2B6-36E2-C82E-53646578CE7B}</ProjectGuid>
+    <ProjectGuid>{4FC0ECA9-D7C5-904D-44F1-910AC76CA5F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -65,20 +65,21 @@
     <Compile Include="Assets\CanvasButtons.cs" />
     <Compile Include="Assets\fgCSVReader.cs" />
     <Compile Include="Assets\LineController.cs" />
+    <Compile Include="Assets\NextLvlButton.cs" />
     <Compile Include="Assets\SingleView.cs" />
     <None Include="Assets\sample_try2.txt" />
     <None Include="Assets\sample_try1.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/Daten/Unity Projekte/First Project Backup/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/Daten/MA_git/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Daten/Unity Projekte/First Project Backup/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Daten/MA_git/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Daten/Unity Projekte/First Project Backup/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Daten/MA_git/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Daten/Unity Projekte/First Project Backup/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Daten/MA_git/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Programme/Unity 2018/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

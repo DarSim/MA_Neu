@@ -20,6 +20,8 @@ public class SingleView : MonoBehaviour {
 
     float shiftX, shiftY, scalingFactor;
 
+    string csvFileName = "csvTest.csv";
+
 
 
 
@@ -132,10 +134,11 @@ public class SingleView : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        fgCSVReader.LoadFromFile(Application.dataPath + "/csvTest.csv", new fgCSVReader.ReadLineDelegate(ReadLineTest));
+        fgCSVReader.LoadFromFile(Application.dataPath + "/" + csvFileName, new fgCSVReader.ReadLineDelegate(ReadLineTest));
         lr1.useWorldSpace = true;
         lr2.useWorldSpace = true;
         lr3.useWorldSpace = true;
+        Debug.Log(csvFileName);
     }
 	
 	// Update is called once per frame
@@ -165,5 +168,10 @@ public class SingleView : MonoBehaviour {
         shiftX = _shiftX;
         shiftY = _shiftY;
         scalingFactor = _scalingFactor;
+    }
+
+    public void changeCsvFilename(string newFileName)
+    {
+        csvFileName = newFileName;
     }
 }

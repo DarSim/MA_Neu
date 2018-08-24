@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class Buttons : MonoBehaviour {
 
     Text t;
+    public GameObject NextLvlButton;
+
+    public Component[] singleViews;
 
 	// Use this for initialization
 	void Start () {
@@ -21,5 +24,14 @@ public class Buttons : MonoBehaviour {
     public void changeTextWhenClicked()
     {
         t.text = "Clicked";
+        StartCoroutine(NextLvl());
+
+        singleViews = (SingleView[])gameObject.GetComponentsInParent(typeof(SingleView));
+    }
+
+    IEnumerator NextLvl()
+    {
+        yield return new WaitForSeconds(2);
+        NextLvlButton.SetActive(true);
     }
 }
