@@ -14,9 +14,15 @@ public class LineController : MonoBehaviour {
     public GameObject SubViewPrefab;
     List<SingleView> singleViewList;
 
+    public GameObject nextLvlButton;
+
+    public int dataCounter;
+    
+
 	// Use this for initialization
 	void Start () {
         startThoseLines(0);
+        
     }
 	
 	// Update is called once per frame
@@ -51,5 +57,6 @@ public class LineController : MonoBehaviour {
         scCon4.initWindow(1f, -4f, scaling);
         singleViewList.Add(scCon4);
         sc4.transform.parent = ViewParent;
+        
     }
 }
