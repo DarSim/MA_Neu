@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class NextLvlButton : MonoBehaviour {
 
     public int lvlCounter;
+    public LineController myLineController;
 
 	// Use this for initialization
 	void Start () {
-        lvlCounter = 0;
+        
 	}
 	
 	// Update is called once per frame
@@ -17,8 +18,16 @@ public class NextLvlButton : MonoBehaviour {
 		
 	}
 
+    private void Awake()
+    {
+        lvlCounter = 0;
+    }
+
     public void nextLvlClicked()
     {
-        lvlCounter++;
+        Debug.Log("nextlvl clicked");
+        lvlCounter = lvlCounter + 4;
+        Debug.Log("lvlcounter: " + lvlCounter);
+        myLineController.TimeScaleFactor = 1;
     }
 }

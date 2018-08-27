@@ -8,7 +8,9 @@ public class Buttons : MonoBehaviour {
     Text t;
     public GameObject NextLvlButton;
 
-    public Component[] singleViews;
+    public SingleView[] singleViews;
+
+    public LineController myLRC;
 
 	// Use this for initialization
 	void Start () {
@@ -25,13 +27,16 @@ public class Buttons : MonoBehaviour {
     {
         t.text = "Clicked";
         StartCoroutine(NextLvl());
-
-        singleViews = (SingleView[])gameObject.GetComponentsInParent(typeof(SingleView));
+        //myLRC.TimeScaleFactor = 0;
+        //Time.timeScale = 0;
+        //singleViews = gameObject.GetComponentsInParent<SingleView>();
     }
 
     IEnumerator NextLvl()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         NextLvlButton.SetActive(true);
+        Debug.Log("Cool Stuff");
+        myLRC.TimeScaleFactor = 0;
     }
 }

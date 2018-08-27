@@ -16,6 +16,16 @@ public class LineController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        startThoseLines(0);
+    }
+	
+	// Update is called once per frame
+	void Update () {
+        Time.timeScale = TimeScaleFactor;
+    }
+
+    public void startThoseLines(int lvlCounter)
+    {
         singleViewList = new List<SingleView>();
 
         GameObject sc1 = Instantiate(SubViewPrefab) as GameObject;
@@ -41,11 +51,5 @@ public class LineController : MonoBehaviour {
         scCon4.initWindow(1f, -4f, scaling);
         singleViewList.Add(scCon4);
         sc4.transform.parent = ViewParent;
-
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        Time.timeScale = TimeScaleFactor;
     }
 }

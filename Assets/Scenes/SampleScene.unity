@@ -475,7 +475,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57, y: 0, z: -118}
+  m_LocalPosition: {x: -59, y: 0, z: -118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -691,6 +691,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextLvlButton: {fileID: 1104261263}
+  singleViews: []
+  myLRC: {fileID: 1255225172}
 --- !u!114 &699571887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,6 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lvlCounter: 0
+  myLineController: {fileID: 1255225172}
 --- !u!1 &1232730981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextLvlButton: {fileID: 1104261263}
+  singleViews: []
+  myLRC: {fileID: 1255225172}
 --- !u!114 &1349699610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,6 +1327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextLvlButton: {fileID: 1104261263}
+  singleViews: []
+  myLRC: {fileID: 1255225172}
 --- !u!114 &1859707214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1458,6 +1465,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextLvlButton: {fileID: 1104261263}
+  singleViews: []
+  myLRC: {fileID: 1255225172}
 --- !u!114 &1985557500
 MonoBehaviour:
   m_ObjectHideFlags: 0
