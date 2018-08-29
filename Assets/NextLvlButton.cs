@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NextLvlButton : MonoBehaviour {
 
-    public int lvlCounter;
+    public int lvlCounter = 1;
     public LineController myLineController;
 
 	// Use this for initialization
@@ -20,14 +20,15 @@ public class NextLvlButton : MonoBehaviour {
 
     private void Awake()
     {
-        lvlCounter = 0;
+
     }
 
     public void nextLvlClicked()
     {
         Debug.Log("nextlvl clicked");
-        lvlCounter = lvlCounter + 4;
+        lvlCounter = lvlCounter++;
         Debug.Log("lvlcounter: " + lvlCounter);
-        myLineController.TimeScaleFactor = 1;
+        //myLineController.TimeScaleFactor = 1;
+        myLineController.startThoseLines(lvlCounter);
     }
 }

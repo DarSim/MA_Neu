@@ -1111,8 +1111,12 @@ MonoBehaviour:
   scaling: 9.5
   SubViewPrefab: {fileID: 1040436668220282, guid: 9464d8e1b1d852f43a3366f1eb0809a3,
     type: 2}
+  singleViewList: []
+  sv_go_list: []
   nextLvlButton: {fileID: 1104261263}
   dataCounter: 0
+  whichLineToChange: 0
+  whichNormalCSV: 1
 --- !u!1 &1349699607
 GameObject:
   m_ObjectHideFlags: 0

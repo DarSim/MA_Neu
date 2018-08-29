@@ -13,18 +13,17 @@ public class SingleView : MonoBehaviour {
     public List<float> csvfileData = new List<float>();
     public List<int> csvfileLR = new List<int>();
     public List<int> csvfileLR_startingPoints = new List<int>();
+    public List<int> csvChange = new List<int>();
 
     public GameObject EraserBar;
 
     float shiftX, shiftY, scalingFactor;
 
-    string csvFileName = "csvTest2.csv";
+    string csvFileName = "csvTest4.csv";
 
     int lr1_start, lr2_start, lr3_start, lr4_start, lr5_start, lr6_start = 0;
 
     int intervalInternCounter = 0;
-
-    public GameObject nlB_obj;
 
 
 
@@ -34,10 +33,16 @@ public class SingleView : MonoBehaviour {
         csvfileData.Add(float.Parse(line[0]));
         csvfileLR.Add(int.Parse(line[1]));
         csvfileLR_startingPoints.Add(int.Parse(line[2]));
+        csvChange.Add(int.Parse(line[3]));
     }
 
     void DrawNewLine2(int data_limit)
     {
+        AnimationCurve curve = new AnimationCurve();
+        curve.AddKey(0.0f, 1.0f);
+        curve.AddKey(1.0f, 1.0f);
+        float multiWidth = 1.0f;
+
         if (intervalInternCounter < data_limit)
         {
             intervalInternCounter++;
@@ -47,14 +52,18 @@ public class SingleView : MonoBehaviour {
             {
                 //setze Datencounter auf 0 --> BEENDEN
                 counterData = 0;
-
-                EndOfLvl();
             }
             else
             {
                 switch (csvfileLR[counterData])
                 {
                     case 1:
+                        if (csvChange[counterData] == 1)
+                        {
+                            lr1.widthCurve = curve;
+                            lr1.widthMultiplier = multiWidth;
+                        }
+
                         lr1.positionCount++;
 
                         lr1.SetPosition(counterIndex_lr1, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
@@ -68,6 +77,12 @@ public class SingleView : MonoBehaviour {
                         break;
 
                     case 2:
+                        if (csvChange[counterData] == 1)
+                        {
+                            lr2.widthCurve = curve;
+                            lr2.widthMultiplier = multiWidth;
+                        }
+
                         lr2.positionCount++;
 
                         lr2.SetPosition(counterIndex_lr2, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
@@ -81,6 +96,12 @@ public class SingleView : MonoBehaviour {
                         break;
 
                     case 3:
+                        if (csvChange[counterData] == 1)
+                        {
+                            lr3.widthCurve = curve;
+                            lr3.widthMultiplier = multiWidth;
+                        }
+
                         lr3.positionCount++;
 
                         lr3.SetPosition(counterIndex_lr3, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
@@ -94,6 +115,12 @@ public class SingleView : MonoBehaviour {
                         break;
 
                     case 4:
+                        if (csvChange[counterData] == 1)
+                        {
+                            lr4.widthCurve = curve;
+                            lr4.widthMultiplier = multiWidth;
+                        }
+
                         lr4.positionCount++;
 
                         lr4.SetPosition(counterIndex_lr4, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
@@ -107,6 +134,12 @@ public class SingleView : MonoBehaviour {
                         break;
 
                     case 5:
+                        if (csvChange[counterData] == 1)
+                        {
+                            lr5.widthCurve = curve;
+                            lr5.widthMultiplier = multiWidth;
+                        }
+
                         lr5.positionCount++;
 
                         lr5.SetPosition(counterIndex_lr5, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
@@ -120,6 +153,12 @@ public class SingleView : MonoBehaviour {
                         break;
 
                     case 6:
+                        if (csvChange[counterData] == 1)
+                        {
+                            lr6.widthCurve = curve;
+                            lr6.widthMultiplier = multiWidth;
+                        }
+
                         lr6.positionCount++;
 
                         lr6.SetPosition(counterIndex_lr6, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
@@ -512,7 +551,7 @@ public class SingleView : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        fgCSVReader.LoadFromFile(Application.dataPath + "/" + csvFileName, new fgCSVReader.ReadLineDelegate(ReadLineTest));
+        fgCSVReader.LoadFromFile(Application.dataPath + "/CSVs/" + csvFileName, new fgCSVReader.ReadLineDelegate(ReadLineTest));
         lr1.useWorldSpace = true;
         lr2.useWorldSpace = true;
         lr3.useWorldSpace = true;
@@ -556,10 +595,5 @@ public class SingleView : MonoBehaviour {
     public void changeCsvFilename(string newFileName)
     {
         csvFileName = newFileName;
-    }
-
-    public void EndOfLvl()
-    {
-        nlB_obj.SetActive(true);
     }
 }

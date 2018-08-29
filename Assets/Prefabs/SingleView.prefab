@@ -308,8 +308,8 @@ MonoBehaviour:
   csvfileData: []
   csvfileLR: 
   csvfileLR_startingPoints: 
+  csvChange: 
   EraserBar: {fileID: 1775361393814364}
-  nlB: {fileID: 0}
 --- !u!120 &120387423645002080
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -438,7 +438,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -798,7 +798,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:

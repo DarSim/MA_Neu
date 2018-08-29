@@ -30,6 +30,7 @@ public class Buttons : MonoBehaviour {
         //myLRC.TimeScaleFactor = 0;
         //Time.timeScale = 0;
         //singleViews = gameObject.GetComponentsInParent<SingleView>();
+        myLRC.calculateTimeNeeded(System.DateTime.Now);
     }
 
     IEnumerator NextLvl()

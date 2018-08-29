@@ -68,6 +68,7 @@
     <Compile Include="Assets\NextLvlButton.cs" />
     <Compile Include="Assets\SingleView.cs" />
     <None Include="Assets\sample_try2.txt" />
+    <None Include="Assets\testFile.txt" />
     <None Include="Assets\sample_try1.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/Daten/MA_git/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
