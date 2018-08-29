@@ -39,78 +39,52 @@ public class LineController : MonoBehaviour {
 
     public void startThoseLines(int lvlCounter)
     {
-        foreach (SingleView sv in singleViewList)
-        {
-            Destroy(sv.gameObject);
-        }
-        singleViewList.Clear();
-        singleViewList = new List<SingleView>();
+        clearTheStage();
 
         // gibt random int zw. 1 und 4 zurück
+        // ermittelt, welche der 4 Linien die Veränderung anzeigen soll
         whichLineToChange = UnityEngine.Random.Range(1, 5);
-        // random int zw. 1 und 4
+        
+        // ermittelt, welche der 4 Grundlinien für dieses Level benutzt wird
         whichNormalCSV = UnityEngine.Random.Range(1, 5);
 
-        GameObject sc1 = Instantiate(SubViewPrefab) as GameObject;
-        SingleView scCon1 = sc1.GetComponent<SingleView>();
+        // instanziiere die Prefabs
         if (whichLineToChange == 1)
         {
-            scCon1.changeCsvFilename("Changed/" + whichNormalCSV + "/csvChange" + lvlCounter + ".csv");
-        }
-        else
+            instanciateLines(-13f, 2f, scaling, true, whichNormalCSV, lvlCounter);
+        } else
         {
-            scCon1.changeCsvFilename("Normal/csvNormal" + whichNormalCSV + ".csv");
+            instanciateLines(-13f, 2f, scaling, false, whichNormalCSV, lvlCounter);
         }
-        scCon1.initWindow(-13f, 2f, scaling);
-        singleViewList.Add(scCon1);
-        sc1.transform.parent = ViewParent;
-        Debug.Log("dumm");
 
-        GameObject sc2 = Instantiate(SubViewPrefab) as GameObject;
-        SingleView scCon2 = sc2.GetComponent<SingleView>();
         if (whichLineToChange == 2)
         {
-            scCon2.changeCsvFilename("Changed/" + whichNormalCSV + "/csvChange" + lvlCounter + ".csv");
-        }
-        else
+            instanciateLines(-13f, -4f, scaling, true, whichNormalCSV, lvlCounter);
+        } else
         {
-            scCon2.changeCsvFilename("Normal/csvNormal" + whichNormalCSV + ".csv");
+            instanciateLines(-13f, -4f, scaling, false, whichNormalCSV, lvlCounter);
         }
-        scCon2.initWindow(-13f, -4f, scaling);
-        singleViewList.Add(scCon2);
-        sc2.transform.parent = ViewParent;
 
-        GameObject sc3 = Instantiate(SubViewPrefab) as GameObject;
-        SingleView scCon3 = sc3.GetComponent<SingleView>();
         if (whichLineToChange == 3)
         {
-            scCon3.changeCsvFilename("Changed/" + whichNormalCSV + "/csvChange" + lvlCounter + ".csv");
-        }
-        else
+            instanciateLines(1f, 2f, scaling, true, whichNormalCSV, lvlCounter);
+        } else
         {
-            scCon3.changeCsvFilename("Normal/csvNormal" + whichNormalCSV + ".csv");
+            instanciateLines(1f, 2f, scaling, false, whichNormalCSV, lvlCounter);
         }
-        scCon3.initWindow(1f, 2f, scaling);
-        singleViewList.Add(scCon3);
-        sc3.transform.parent = ViewParent;
 
-        GameObject sc4 = Instantiate(SubViewPrefab) as GameObject;
-        SingleView scCon4 = sc4.GetComponent<SingleView>();
         if (whichLineToChange == 4)
         {
-            scCon4.changeCsvFilename("Changed/" + whichNormalCSV + "/csvChange" + lvlCounter + ".csv");
-        }
-        else
+            instanciateLines(1f, -4f, scaling, true, whichNormalCSV, lvlCounter);
+        } else
         {
-            scCon4.changeCsvFilename("Normal/csvNormal" + whichNormalCSV + ".csv");
+            instanciateLines(1f, -4f, scaling, false, whichNormalCSV, lvlCounter);
         }
-        scCon4.initWindow(1f, -4f, scaling);
-        singleViewList.Add(scCon4);
-        sc4.transform.parent = ViewParent;
 
         startOfLvl = DateTime.Now;
-
     }
+
+
 
     public void calculateTimeNeeded(DateTime endOfLvl)
     {
@@ -122,5 +96,33 @@ public class LineController : MonoBehaviour {
         string path = Application.dataPath + "/testFile.txt";
         string toBeSaved = elapsedSpan.TotalSeconds.ToString() + Environment.NewLine;
         File.AppendAllText(path, toBeSaved);
+    }
+
+
+
+    public void instanciateLines(float xCoord, float yCoord, float scaling, bool change, int whichNormalLine, int lvlCounter)
+    {
+        GameObject subViewGO = Instantiate(SubViewPrefab) as GameObject;
+        SingleView subViewController = subViewGO.GetComponent<SingleView>();
+        if (change)
+        {
+            subViewController.changeCsvFilename("Changed/" + whichNormalLine + "/csvChange" + lvlCounter + ".csv");
+        } else
+        {
+            subViewController.changeCsvFilename("Normal/csvNormal" + whichNormalLine + ".csv");
+        }
+        subViewController.initWindow(xCoord, yCoord, scaling);
+        singleViewList.Add(subViewController);
+        subViewController.transform.parent = ViewParent;
+    }
+
+    public void clearTheStage()
+    {
+        foreach (SingleView sv in singleViewList)
+        {
+            Destroy(sv.gameObject);
+        }
+        singleViewList.Clear();
+        singleViewList = new List<SingleView>();
     }
 }
