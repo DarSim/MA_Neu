@@ -25,6 +25,10 @@ public class SingleView : MonoBehaviour {
 
     int intervalInternCounter = 0;
 
+    public GameObject backgroundButton;
+
+    public Canvas buttonCanvas;
+
 
 
     void ReadLineTest(int line_index, List<string> line)
@@ -244,8 +248,6 @@ public class SingleView : MonoBehaviour {
 
     void FixedUpdate()
     {
-        //DrawLine(csvfileData, 1200);
-        //DrawNewLine();
         DrawNewLine2(1200);
     }
 
@@ -271,5 +273,22 @@ public class SingleView : MonoBehaviour {
     public void changeCsvFilename(string newFileName)
     {
         csvFileName = newFileName;
+    }
+
+    public void initButton(float xPos, float yPos, float zPos)
+    {
+        buttonCanvas.transform.position = new Vector3(xPos, yPos, zPos);
+    }
+
+    public void setButtonConnections(GameObject nLB, LineController lineController)
+    {
+        Buttons buttonController = backgroundButton.GetComponent<Buttons>();
+        buttonController.NextLvlButton = nLB;
+        buttonController.myLRC = lineController;
+    }
+
+    public void setCameraForCanvas(Camera mainCam)
+    {
+        buttonCanvas.worldCamera = mainCam;
     }
 }

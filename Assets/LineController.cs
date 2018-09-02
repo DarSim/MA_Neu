@@ -15,7 +15,6 @@ public class LineController : MonoBehaviour {
 
     public GameObject SubViewPrefab;
     public List<SingleView> singleViewList;
-    public GameObject[] sv_go_list;
 
     public GameObject nextLvlButton;
 
@@ -24,6 +23,8 @@ public class LineController : MonoBehaviour {
     public DateTime startOfLvl;
 
     public int whichLineToChange, whichNormalCSV = 1;
+
+    public Camera mainCam;
 
 
     // Use this for initialization
@@ -51,34 +52,34 @@ public class LineController : MonoBehaviour {
         // instanziiere die Prefabs
         if (whichLineToChange == 1)
         {
-            instanciateLines(-13f, 2f, scaling, true, whichNormalCSV, lvlCounter);
+            instanciateLines(-13f, 2f, scaling, true, whichNormalCSV, lvlCounter, -120, 27, -6);
         } else
         {
-            instanciateLines(-13f, 2f, scaling, false, whichNormalCSV, lvlCounter);
+            instanciateLines(-13f, 2f, scaling, false, whichNormalCSV, lvlCounter, -120, 27, -6);
         }
 
         if (whichLineToChange == 2)
         {
-            instanciateLines(-13f, -4f, scaling, true, whichNormalCSV, lvlCounter);
+            instanciateLines(-13f, -4f, scaling, true, whichNormalCSV, lvlCounter, -120, -40, -6);
         } else
         {
-            instanciateLines(-13f, -4f, scaling, false, whichNormalCSV, lvlCounter);
+            instanciateLines(-13f, -4f, scaling, false, whichNormalCSV, lvlCounter, -120, -40, -6);
         }
 
         if (whichLineToChange == 3)
         {
-            instanciateLines(1f, 2f, scaling, true, whichNormalCSV, lvlCounter);
+            instanciateLines(1f, 2f, scaling, true, whichNormalCSV, lvlCounter, 5, 27, -6);
         } else
         {
-            instanciateLines(1f, 2f, scaling, false, whichNormalCSV, lvlCounter);
+            instanciateLines(1f, 2f, scaling, false, whichNormalCSV, lvlCounter, 5, 27, -6);
         }
 
         if (whichLineToChange == 4)
         {
-            instanciateLines(1f, -4f, scaling, true, whichNormalCSV, lvlCounter);
+            instanciateLines(1f, -4f, scaling, true, whichNormalCSV, lvlCounter, 5, -40, -6);
         } else
         {
-            instanciateLines(1f, -4f, scaling, false, whichNormalCSV, lvlCounter);
+            instanciateLines(1f, -4f, scaling, false, whichNormalCSV, lvlCounter, 5, -40, -6);
         }
 
         startOfLvl = DateTime.Now;
@@ -100,18 +101,23 @@ public class LineController : MonoBehaviour {
 
 
 
-    public void instanciateLines(float xCoord, float yCoord, float scaling, bool change, int whichNormalLine, int lvlCounter)
+    public void instanciateLines(float xCoord, float yCoord, float scaling, bool change, int whichNormalLine, int lvlCounter, float buttonPosX, float buttonPosY, float buttonPosZ)
     {
         GameObject subViewGO = Instantiate(SubViewPrefab) as GameObject;
         SingleView subViewController = subViewGO.GetComponent<SingleView>();
         if (change)
         {
             subViewController.changeCsvFilename("Changed/" + whichNormalLine + "/csvChange" + lvlCounter + ".csv");
+            //TODO: hier methode aufrufen für button text = richtig
         } else
         {
             subViewController.changeCsvFilename("Normal/csvNormal" + whichNormalLine + ".csv");
+            //TODO: hier methode aufrufen für button text = falsch
         }
         subViewController.initWindow(xCoord, yCoord, scaling);
+        subViewController.setCameraForCanvas(mainCam);
+        subViewController.initButton(buttonPosX, buttonPosY, buttonPosZ);
+        subViewController.setButtonConnections(nextLvlButton, this);
         singleViewList.Add(subViewController);
         subViewController.transform.parent = ViewParent;
     }
