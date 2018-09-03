@@ -391,6 +391,8 @@ MonoBehaviour:
   NextLvlButton: {fileID: 0}
   singleViews: []
   myLRC: {fileID: 0}
+  changedLine: 0
+  endOfGameButton: {fileID: 0}
 --- !u!114 &114236728768102308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,6 +505,7 @@ MonoBehaviour:
   EraserBar: {fileID: 1775361393814364}
   backgroundButton: {fileID: 1133912638939266}
   buttonCanvas: {fileID: 223836155934089134}
+  myShader: {fileID: 0}
 --- !u!114 &114992506281761960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -515,7 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6886792, g: 0.36707902, b: 0.6184744, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -725,7 +728,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 977c788cc8e60124783285edff899fff, type: 2}
+  - {fileID: 2100000, guid: df6ef6cdd31daa841b6acf4a970a3f07, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

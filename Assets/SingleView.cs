@@ -223,11 +223,12 @@ public class SingleView : MonoBehaviour {
         buttonCanvas.transform.position = new Vector3(xPos, yPos, zPos);
     }
 
-    public void setButtonConnections(GameObject nLB, LineController lineController, bool changed)
+    public void setButtonConnections(GameObject nLB, LineController lineController, bool changed, GameObject endButton)
     {
         Buttons buttonController = backgroundButton.GetComponent<Buttons>();
         buttonController.NextLvlButton = nLB;
         buttonController.myLRC = lineController;
+        buttonController.endOfGameButton = endButton;
 
         if (changed)
         {

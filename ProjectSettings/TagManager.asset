@@ -47,3 +47,9 @@ TagManager:
   - name: EraserBalken
     uniqueID: 1290107459
     locked: 0
+  - name: SingleViewButtons
+    uniqueID: 3010381149
+    locked: 0
+  - name: NextLvlButton
+    uniqueID: 2872946629
+    locked: 0

@@ -16,6 +16,8 @@ public class Buttons : MonoBehaviour {
 
     string buttonText = "falsch";
 
+    public GameObject endOfGameButton;
+
 	// Use this for initialization
 	void Start () {
         t = GetComponentInChildren<Text>();
@@ -30,11 +32,18 @@ public class Buttons : MonoBehaviour {
     public void changeTextWhenClicked()
     {
         t.text = buttonText;
-        StartCoroutine(NextLvl());
-        //myLRC.TimeScaleFactor = 0;
-        //Time.timeScale = 0;
-        //singleViews = gameObject.GetComponentsInParent<SingleView>();
-        myLRC.calculateTimeNeeded(System.DateTime.Now);
+        NextLvlButton nLBController = NextLvlButton.GetComponent<NextLvlButton>();
+        Debug.Log("lvlCounter in Button: " + nLBController.lvlCounter);
+        myLRC.calculateTimeNeeded(System.DateTime.Now, nLBController.lvlCounter, buttonText);
+        if (nLBController.lvlCounter < 4)
+        {
+            StartCoroutine(NextLvl());
+            
+        } else
+        {
+            myLRC.clearTheStage();
+            endOfGameButton.SetActive(true);
+        }
     }
 
     IEnumerator NextLvl()

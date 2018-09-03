@@ -26,10 +26,12 @@ public class LineController : MonoBehaviour {
 
     public Camera mainCam;
 
+    public GameObject endButton;
+
 
     // Use this for initialization
     void Start () {
-        startThoseLines(1);
+        startThoseLines(0);
         
     }
 	
@@ -40,9 +42,9 @@ public class LineController : MonoBehaviour {
 
     public void startThoseLines(int lvlCounter)
     {
+        // zerstöre die alten Prefabs
         clearTheStage();
 
-        // gibt random int zw. 1 und 4 zurück
         // ermittelt, welche der 4 Linien die Veränderung anzeigen soll
         whichLineToChange = UnityEngine.Random.Range(1, 5);
         
@@ -52,42 +54,43 @@ public class LineController : MonoBehaviour {
         // instanziiere die Prefabs
         if (whichLineToChange == 1)
         {
-            instanciateLines(-13f, 2f, scaling, true, whichNormalCSV, lvlCounter, -120, 30, -6);
+            instanciateLines(-13f, 2f, scaling, true, whichNormalCSV, lvlCounter, -120, 30, 0.5f);
         } else
         {
-            instanciateLines(-13f, 2f, scaling, false, whichNormalCSV, lvlCounter, -120, 30, -6);
+            instanciateLines(-13f, 2f, scaling, false, whichNormalCSV, lvlCounter, -120, 30, 0.5f);
         }
 
         if (whichLineToChange == 2)
         {
-            instanciateLines(-13f, -4f, scaling, true, whichNormalCSV, lvlCounter, -120, -37, -6);
+            instanciateLines(-13f, -4f, scaling, true, whichNormalCSV, lvlCounter, -120, -37, 0.5f);
         } else
         {
-            instanciateLines(-13f, -4f, scaling, false, whichNormalCSV, lvlCounter, -120, -37, -6);
+            instanciateLines(-13f, -4f, scaling, false, whichNormalCSV, lvlCounter, -120, -37, 0.5f);
         }
 
         if (whichLineToChange == 3)
         {
-            instanciateLines(1f, 2f, scaling, true, whichNormalCSV, lvlCounter, 5, 30, -6);
+            instanciateLines(1f, 2f, scaling, true, whichNormalCSV, lvlCounter, 5, 30, 0.5f);
         } else
         {
-            instanciateLines(1f, 2f, scaling, false, whichNormalCSV, lvlCounter, 5, 30, -6);
+            instanciateLines(1f, 2f, scaling, false, whichNormalCSV, lvlCounter, 5, 30, 0.5f);
         }
 
         if (whichLineToChange == 4)
         {
-            instanciateLines(1f, -4f, scaling, true, whichNormalCSV, lvlCounter, 5, -37, -6);
+            instanciateLines(1f, -4f, scaling, true, whichNormalCSV, lvlCounter, 5, -37, 0.5f);
         } else
         {
-            instanciateLines(1f, -4f, scaling, false, whichNormalCSV, lvlCounter, 5, -37, -6);
+            instanciateLines(1f, -4f, scaling, false, whichNormalCSV, lvlCounter, 5, -37, 0.5f);
         }
 
         startOfLvl = DateTime.Now;
     }
 
-
-
-    public void calculateTimeNeeded(DateTime endOfLvl)
+    // wird vom Buttons-Skript aufgerufen und berechnet die Zeit die vergangen ist zwischen dem Start des Levels und dem Klicken auf eine der Linien
+    // Abgespeicherte Zeile sieht z.b. folgendermaßen aus:
+    // 9/3/2018 5:06:02 PM, Level: 0, time needed: 1.54, Button clicked: richtig
+    public void calculateTimeNeeded(DateTime endOfLvl, int lvlCounter, string buttonText)
     {
         long elapsedTicks = endOfLvl.Ticks - startOfLvl.Ticks;
         TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
@@ -95,11 +98,10 @@ public class LineController : MonoBehaviour {
         Debug.Log(elapsedSpan.TotalSeconds);
 
         string path = Application.dataPath + "/testFile.txt";
-        string toBeSaved = elapsedSpan.TotalSeconds.ToString() + Environment.NewLine;
+        string toBeSaved = DateTime.Now + ", Level: " + lvlCounter + ", time needed: " + elapsedSpan.TotalSeconds.ToString("F2") + ", Linienart-Nr: " + whichNormalCSV 
+            + ", Changed Linie: " + whichLineToChange + ", Button clicked: " + buttonText + Environment.NewLine;
         File.AppendAllText(path, toBeSaved);
     }
-
-
 
     public void instanciateLines(float xCoord, float yCoord, float scaling, bool change, int whichNormalLine, int lvlCounter, float buttonPosX, float buttonPosY, float buttonPosZ)
     {
@@ -115,7 +117,7 @@ public class LineController : MonoBehaviour {
         subViewController.initWindow(xCoord, yCoord, scaling);
         subViewController.setCameraForCanvas(mainCam);
         subViewController.initButton(buttonPosX, buttonPosY, buttonPosZ);
-        subViewController.setButtonConnections(nextLvlButton, this, change);
+        subViewController.setButtonConnections(nextLvlButton, this, change, endButton);
         singleViewList.Add(subViewController);
         subViewController.transform.parent = ViewParent;
     }

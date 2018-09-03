@@ -40,3 +40,52 @@
 7.3914335
 2.2870737
 26.0824456
+Level: 0, time needed: 13.5688773
+Level: 2, time needed: 22.42532
+Level: 0, time needed: 3.1855344
+Level: 1, time needed: 4.8830955
+Level: 2, time needed: 3.3750092
+Level: 0, time needed: 3.8145929
+Level: 1, time needed: 1.6992813
+Level: 2, time needed: 0.9772492
+Level: 3, time needed: 1.1796607
+Level: 0, time needed: 6.2573296
+Level: 0, time needed: 9.9531185
+Level: 1, time needed: 4.3925481
+Level: 2, time needed: 5.3485125
+Level: 3, time needed: 3.4676684
+9/3/2018 5:02:36 PM, Level: 0, time needed: 3.3905895
+9/3/2018 5:06:02 PM, Level: 0, time needed: 1.54, Button clicked: richtig
+9/3/2018 5:06:06 PM, Level: 1, time needed: 1.18, Button clicked: falsch
+9/3/2018 5:06:08 PM, Level: 2, time needed: 0.57, Button clicked: richtig
+9/3/2018 5:18:56 PM, Level: 0, time needed: 1.71, Button clicked: falsch, Linienart-Nr: 4, Changed Linie: 4
+9/3/2018 5:19:02 PM, Level: 1, time needed: 1.71, Button clicked: falsch, Linienart-Nr: 2, Changed Linie: 1
+9/3/2018 5:19:05 PM, Level: 2, time needed: 1.44, Button clicked: falsch, Linienart-Nr: 4, Changed Linie: 3
+9/3/2018 5:19:08 PM, Level: 3, time needed: 0.94, Button clicked: richtig, Linienart-Nr: 1, Changed Linie: 3
+9/3/2018 5:19:13 PM, Level: 4, time needed: 2.64, Button clicked: falsch, Linienart-Nr: 3, Changed Linie: 1
+9/3/2018 5:43:51 PM, Level: 0, time needed: 1.61, Linienart-Nr: 2, Changed Linie: 4, Button clicked: falsch
+9/3/2018 5:43:54 PM, Level: 1, time needed: 1.02, Linienart-Nr: 2, Changed Linie: 2, Button clicked: richtig
+9/3/2018 5:43:56 PM, Level: 2, time needed: 0.64, Linienart-Nr: 2, Changed Linie: 2, Button clicked: falsch
+9/3/2018 5:43:59 PM, Level: 3, time needed: 1.00, Linienart-Nr: 4, Changed Linie: 1, Button clicked: falsch
+9/3/2018 5:44:04 PM, Level: 4, time needed: 0.98, Linienart-Nr: 2, Changed Linie: 4, Button clicked: richtig
+9/3/2018 5:45:57 PM, Level: 0, time needed: 3.31, Linienart-Nr: 2, Changed Linie: 2, Button clicked: richtig
+9/3/2018 5:46:07 PM, Level: 1, time needed: 2.77, Linienart-Nr: 2, Changed Linie: 4, Button clicked: richtig
+9/3/2018 5:46:21 PM, Level: 2, time needed: 1.31, Linienart-Nr: 3, Changed Linie: 3, Button clicked: falsch
+9/3/2018 5:46:29 PM, Level: 3, time needed: 1.47, Linienart-Nr: 2, Changed Linie: 2, Button clicked: falsch
+9/3/2018 5:46:35 PM, Level: 4, time needed: 1.30, Linienart-Nr: 1, Changed Linie: 4, Button clicked: falsch
+9/3/2018 5:47:34 PM, Level: 0, time needed: 2.53, Linienart-Nr: 1, Changed Linie: 3, Button clicked: falsch
+9/3/2018 5:47:37 PM, Level: 1, time needed: 1.19, Linienart-Nr: 1, Changed Linie: 4, Button clicked: richtig
+9/3/2018 5:47:39 PM, Level: 2, time needed: 0.73, Linienart-Nr: 1, Changed Linie: 4, Button clicked: falsch
+9/3/2018 5:47:43 PM, Level: 3, time needed: 1.82, Linienart-Nr: 1, Changed Linie: 3, Button clicked: falsch
+9/3/2018 5:53:43 PM, Level: 0, time needed: 1.57, Linienart-Nr: 3, Changed Linie: 4, Button clicked: falsch
+9/3/2018 5:53:46 PM, Level: 1, time needed: 1.10, Linienart-Nr: 4, Changed Linie: 1, Button clicked: falsch
+9/3/2018 5:53:49 PM, Level: 2, time needed: 1.14, Linienart-Nr: 2, Changed Linie: 1, Button clicked: falsch
+9/3/2018 5:53:52 PM, Level: 3, time needed: 1.57, Linienart-Nr: 3, Changed Linie: 2, Button clicked: richtig
+9/3/2018 5:53:55 PM, Level: 4, time needed: 1.10, Linienart-Nr: 3, Changed Linie: 3, Button clicked: falsch
+9/3/2018 6:14:26 PM, Level: 0, time needed: 7.22, Linienart-Nr: 1, Changed Linie: 2, Button clicked: falsch
+9/3/2018 6:19:55 PM, Level: 0, time needed: 17.47, Linienart-Nr: 3, Changed Linie: 2, Button clicked: richtig
+9/3/2018 6:20:22 PM, Level: 1, time needed: 22.05, Linienart-Nr: 1, Changed Linie: 4, Button clicked: richtig
+9/3/2018 6:22:31 PM, Level: 0, time needed: 4.64, Linienart-Nr: 1, Changed Linie: 1, Button clicked: richtig
+9/3/2018 6:31:12 PM, Level: 0, time needed: 7.48, Linienart-Nr: 4, Changed Linie: 1, Button clicked: richtig
+9/3/2018 6:37:01 PM, Level: 0, time needed: 24.52, Linienart-Nr: 3, Changed Linie: 2, Button clicked: richtig
+9/3/2018 6:59:15 PM, Level: 0, time needed: 19.60, Linienart-Nr: 3, Changed Linie: 1, Button clicked: richtig
