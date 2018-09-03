@@ -52,34 +52,34 @@ public class LineController : MonoBehaviour {
         // instanziiere die Prefabs
         if (whichLineToChange == 1)
         {
-            instanciateLines(-13f, 2f, scaling, true, whichNormalCSV, lvlCounter, -120, 27, -6);
+            instanciateLines(-13f, 2f, scaling, true, whichNormalCSV, lvlCounter, -120, 30, -6);
         } else
         {
-            instanciateLines(-13f, 2f, scaling, false, whichNormalCSV, lvlCounter, -120, 27, -6);
+            instanciateLines(-13f, 2f, scaling, false, whichNormalCSV, lvlCounter, -120, 30, -6);
         }
 
         if (whichLineToChange == 2)
         {
-            instanciateLines(-13f, -4f, scaling, true, whichNormalCSV, lvlCounter, -120, -40, -6);
+            instanciateLines(-13f, -4f, scaling, true, whichNormalCSV, lvlCounter, -120, -37, -6);
         } else
         {
-            instanciateLines(-13f, -4f, scaling, false, whichNormalCSV, lvlCounter, -120, -40, -6);
+            instanciateLines(-13f, -4f, scaling, false, whichNormalCSV, lvlCounter, -120, -37, -6);
         }
 
         if (whichLineToChange == 3)
         {
-            instanciateLines(1f, 2f, scaling, true, whichNormalCSV, lvlCounter, 5, 27, -6);
+            instanciateLines(1f, 2f, scaling, true, whichNormalCSV, lvlCounter, 5, 30, -6);
         } else
         {
-            instanciateLines(1f, 2f, scaling, false, whichNormalCSV, lvlCounter, 5, 27, -6);
+            instanciateLines(1f, 2f, scaling, false, whichNormalCSV, lvlCounter, 5, 30, -6);
         }
 
         if (whichLineToChange == 4)
         {
-            instanciateLines(1f, -4f, scaling, true, whichNormalCSV, lvlCounter, 5, -40, -6);
+            instanciateLines(1f, -4f, scaling, true, whichNormalCSV, lvlCounter, 5, -37, -6);
         } else
         {
-            instanciateLines(1f, -4f, scaling, false, whichNormalCSV, lvlCounter, 5, -40, -6);
+            instanciateLines(1f, -4f, scaling, false, whichNormalCSV, lvlCounter, 5, -37, -6);
         }
 
         startOfLvl = DateTime.Now;
@@ -108,16 +108,14 @@ public class LineController : MonoBehaviour {
         if (change)
         {
             subViewController.changeCsvFilename("Changed/" + whichNormalLine + "/csvChange" + lvlCounter + ".csv");
-            //TODO: hier methode aufrufen für button text = richtig
         } else
         {
             subViewController.changeCsvFilename("Normal/csvNormal" + whichNormalLine + ".csv");
-            //TODO: hier methode aufrufen für button text = falsch
         }
         subViewController.initWindow(xCoord, yCoord, scaling);
         subViewController.setCameraForCanvas(mainCam);
         subViewController.initButton(buttonPosX, buttonPosY, buttonPosZ);
-        subViewController.setButtonConnections(nextLvlButton, this);
+        subViewController.setButtonConnections(nextLvlButton, this, change);
         singleViewList.Add(subViewController);
         subViewController.transform.parent = ViewParent;
     }

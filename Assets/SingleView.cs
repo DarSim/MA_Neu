@@ -29,6 +29,10 @@ public class SingleView : MonoBehaviour {
 
     public Canvas buttonCanvas;
 
+    public Shader myShader;
+
+    float multiWidth = 1.0f;
+    AnimationCurve curve = new AnimationCurve();
 
 
     void ReadLineTest(int line_index, List<string> line)
@@ -41,10 +45,8 @@ public class SingleView : MonoBehaviour {
 
     void DrawNewLine2(int data_limit)
     {
-        AnimationCurve curve = new AnimationCurve();
         curve.AddKey(0.0f, 1.0f);
         curve.AddKey(1.0f, 1.0f);
-        float multiWidth = 1.0f;
 
         if (intervalInternCounter < data_limit)
         {
@@ -55,24 +57,15 @@ public class SingleView : MonoBehaviour {
             {
                 //setze Datencounter auf 0 --> BEENDEN
                 counterData = 0;
+                backgroundButton.GetComponent<Buttons>().changeTextWhenClicked();
             }
             else
             {
                 switch (csvfileLR[counterData])
                 {
                     case 1:
-                        if (csvChange[counterData] == 1)
-                        {
-                            lr1.widthCurve = curve;
-                            lr1.widthMultiplier = multiWidth;
-                        }
+                        drawLinesWithLR(lr1, counterIndex_lr1);
 
-                        lr1.positionCount++;
-
-                        lr1.SetPosition(counterIndex_lr1, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
-                        EraserBar.transform.position = new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, 0.0f + shiftY, -0.5f) * scalingFactor;
-
-                        //erhöhe Interval-Counter von LR1
                         counterIndex_lr1++;
 
                         lr1_start = csvfileLR_startingPoints[counterData];
@@ -80,18 +73,8 @@ public class SingleView : MonoBehaviour {
                         break;
 
                     case 2:
-                        if (csvChange[counterData] == 1)
-                        {
-                            lr2.widthCurve = curve;
-                            lr2.widthMultiplier = multiWidth;
-                        }
-
-                        lr2.positionCount++;
-
-                        lr2.SetPosition(counterIndex_lr2, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
-                        EraserBar.transform.position = new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, 0.0f + shiftY, -0.5f) * scalingFactor;
-
-                        //erhöhe Interval-Counter von LR1
+                        drawLinesWithLR(lr2, counterIndex_lr2);
+                        
                         counterIndex_lr2++;
 
                         lr2_start = csvfileLR_startingPoints[counterData];
@@ -99,18 +82,8 @@ public class SingleView : MonoBehaviour {
                         break;
 
                     case 3:
-                        if (csvChange[counterData] == 1)
-                        {
-                            lr3.widthCurve = curve;
-                            lr3.widthMultiplier = multiWidth;
-                        }
-
-                        lr3.positionCount++;
-
-                        lr3.SetPosition(counterIndex_lr3, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
-                        EraserBar.transform.position = new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, 0.0f + shiftY, -0.5f) * scalingFactor;
-
-                        //erhöhe Interval-Counter von LR1
+                        drawLinesWithLR(lr3, counterIndex_lr3);
+                        
                         counterIndex_lr3++;
 
                         lr3_start = csvfileLR_startingPoints[counterData];
@@ -118,18 +91,8 @@ public class SingleView : MonoBehaviour {
                         break;
 
                     case 4:
-                        if (csvChange[counterData] == 1)
-                        {
-                            lr4.widthCurve = curve;
-                            lr4.widthMultiplier = multiWidth;
-                        }
+                        drawLinesWithLR(lr4, counterIndex_lr4);
 
-                        lr4.positionCount++;
-
-                        lr4.SetPosition(counterIndex_lr4, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
-                        EraserBar.transform.position = new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, 0.0f + shiftY, -0.5f) * scalingFactor;
-
-                        //erhöhe Interval-Counter von LR1
                         counterIndex_lr4++;
 
                         lr4_start = csvfileLR_startingPoints[counterData];
@@ -137,18 +100,8 @@ public class SingleView : MonoBehaviour {
                         break;
 
                     case 5:
-                        if (csvChange[counterData] == 1)
-                        {
-                            lr5.widthCurve = curve;
-                            lr5.widthMultiplier = multiWidth;
-                        }
+                        drawLinesWithLR(lr5, counterIndex_lr5);
 
-                        lr5.positionCount++;
-
-                        lr5.SetPosition(counterIndex_lr5, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
-                        EraserBar.transform.position = new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, 0.0f + shiftY, -0.5f) * scalingFactor;
-
-                        //erhöhe Interval-Counter von LR1
                         counterIndex_lr5++;
 
                         lr5_start = csvfileLR_startingPoints[counterData];
@@ -156,18 +109,8 @@ public class SingleView : MonoBehaviour {
                         break;
 
                     case 6:
-                        if (csvChange[counterData] == 1)
-                        {
-                            lr6.widthCurve = curve;
-                            lr6.widthMultiplier = multiWidth;
-                        }
+                        drawLinesWithLR(lr6, counterIndex_lr6);
 
-                        lr6.positionCount++;
-
-                        lr6.SetPosition(counterIndex_lr6, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
-                        EraserBar.transform.position = new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, 0.0f + shiftY, -0.5f) * scalingFactor;
-
-                        //erhöhe Interval-Counter von LR1
                         counterIndex_lr6++;
 
                         lr6_start = csvfileLR_startingPoints[counterData];
@@ -280,15 +223,34 @@ public class SingleView : MonoBehaviour {
         buttonCanvas.transform.position = new Vector3(xPos, yPos, zPos);
     }
 
-    public void setButtonConnections(GameObject nLB, LineController lineController)
+    public void setButtonConnections(GameObject nLB, LineController lineController, bool changed)
     {
         Buttons buttonController = backgroundButton.GetComponent<Buttons>();
         buttonController.NextLvlButton = nLB;
         buttonController.myLRC = lineController;
+
+        if (changed)
+        {
+            buttonController.changedShownText();
+        }
     }
 
     public void setCameraForCanvas(Camera mainCam)
     {
         buttonCanvas.worldCamera = mainCam;
+    }
+
+    public void drawLinesWithLR(LineRenderer lr, int counterIndex_lr)
+    {
+        if (csvChange[counterData] == 1)
+        {
+            lr.widthCurve = curve;
+            lr.widthMultiplier = multiWidth;
+        }
+
+        lr.positionCount++;
+
+        lr.SetPosition(counterIndex_lr, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
+        EraserBar.transform.position = new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, 0.0f + shiftY, -0.5f) * scalingFactor;
     }
 }

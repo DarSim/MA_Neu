@@ -12,6 +12,10 @@ public class Buttons : MonoBehaviour {
 
     public LineController myLRC;
 
+    public bool changedLine;
+
+    string buttonText = "falsch";
+
 	// Use this for initialization
 	void Start () {
         t = GetComponentInChildren<Text>();
@@ -25,7 +29,7 @@ public class Buttons : MonoBehaviour {
 
     public void changeTextWhenClicked()
     {
-        t.text = "Clicked";
+        t.text = buttonText;
         StartCoroutine(NextLvl());
         //myLRC.TimeScaleFactor = 0;
         //Time.timeScale = 0;
@@ -39,5 +43,10 @@ public class Buttons : MonoBehaviour {
         NextLvlButton.SetActive(true);
         Debug.Log("Cool Stuff");
         myLRC.TimeScaleFactor = 0;
+    }
+
+    public void changedShownText()
+    {
+        buttonText = "richtig";
     }
 }
