@@ -70,6 +70,7 @@
     <Compile Include="Assets\SingleView.cs" />
     <None Include="Assets\testShader.shader" />
     <None Include="Assets\sample_try2.txt" />
+    <None Include="Assets\testShader2.shader" />
     <None Include="Assets\testFile.txt" />
     <None Include="Assets\sample_try1.txt" />
     <Reference Include="UnityEditor.StandardEvents">

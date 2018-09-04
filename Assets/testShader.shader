@@ -7,7 +7,7 @@
 	}
 	SubShader
 	{
-		Tags{ "RenderType" = "Opaque" }
+		Tags{ "RenderType" = "Opaque" "DisableBatching" = "true" }
 		LOD 100
 
 		Pass
@@ -43,8 +43,9 @@
 
 				// I added a third texture coordinate,
 				// and populated it with the worldspace y position.
-				//o.uv.z = mul(unity_ObjectToWorld, v.vertex).y;
-				o.uv.z = v.vertex.y;
+				o.uv.z = mul(unity_ObjectToWorld, v.vertex).y;
+				//o.uv.z = v.vertex.y;
+				//o.uv.z = v.uv.y;
 
 				return o;
 			}
@@ -53,7 +54,7 @@
 			{
 				// This turns the worldspace y position
 				// into a tight blending ramp from 0 to 1.
-				float blend = saturate(i.uv.z * 10.0f);
+				float blend = saturate(frac(i.uv.z)*10.0f);
 
 				// This blends between the two colours.
 				fixed4 col = lerp(_UnderColor, _Color, blend);

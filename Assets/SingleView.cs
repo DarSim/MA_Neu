@@ -175,12 +175,14 @@ public class SingleView : MonoBehaviour {
     // Use this for initialization
     void Start () {
         fgCSVReader.LoadFromFile(Application.dataPath + "/CSVs/" + csvFileName, new fgCSVReader.ReadLineDelegate(ReadLineTest));
+        /*
         lr1.useWorldSpace = true;
         lr2.useWorldSpace = true;
         lr3.useWorldSpace = true;
         lr4.useWorldSpace = true;
         lr5.useWorldSpace = true;
         lr6.useWorldSpace = true;
+        */
         Debug.Log(csvFileName);
     }
 	
@@ -252,6 +254,6 @@ public class SingleView : MonoBehaviour {
         lr.positionCount++;
 
         lr.SetPosition(counterIndex_lr, new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, csvfileData[counterData] + shiftY, 0.0f) * scalingFactor);
-        EraserBar.transform.position = new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, 0.0f + shiftY, -0.5f) * scalingFactor;
+        EraserBar.transform.position = new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, 0.0f + shiftY, -0.001f) * scalingFactor;
     }
 }
