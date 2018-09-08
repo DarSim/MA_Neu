@@ -48,7 +48,7 @@ public class Buttons : MonoBehaviour {
 
     IEnumerator NextLvl()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         NextLvlButton.SetActive(true);
         Debug.Log("Cool Stuff");
         myLRC.TimeScaleFactor = 0;

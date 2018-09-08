@@ -76,10 +76,10 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
-    - _Tiling: 2
+    - _Tiling: 1
     - _UVSec: 0
     - _UseUIAlphaClip: 0
-    - _WidthShift: -0.31
+    - _WidthShift: 0.36
     - _ZWrite: 1
     m_Colors:
     - _AnotherColor: {r: 0.38679248, g: 0.20981668, b: 0.36136803, a: 0}

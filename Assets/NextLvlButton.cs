@@ -28,7 +28,7 @@ public class NextLvlButton : MonoBehaviour {
         Debug.Log("nextlvl clicked");
         lvlCounter++;
         Debug.Log("lvlcounter: " + lvlCounter);
-        myLineController.TimeScaleFactor = 1;
+        myLineController.TimeScaleFactor = 2;
         myLineController.startThoseLines(lvlCounter);
         this.gameObject.SetActive(false);
 
