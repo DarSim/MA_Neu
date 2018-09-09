@@ -28,11 +28,15 @@ public class LineController : MonoBehaviour {
 
     public GameObject endButton;
 
+    public DateTime startOfChange = DateTime.MinValue;
+
+    int[] orderOfCSVs = new int[] {13, 27, 8, 12, 5, 2, 15, 10, 29, 32, 6, 21, 16, 31, 7, 4, 28, 20, 24,
+                                   30, 26, 25, 18, 14, 0, 35, 22, 1, 3, 17, 23, 34, 33, 19, 9, 11};
+
 
     // Use this for initialization
     void Start () {
         startThoseLines(0);
-        
     }
 	
 	// Update is called once per frame
@@ -47,9 +51,6 @@ public class LineController : MonoBehaviour {
 
         // ermittelt, welche der 4 Linien die Veränderung anzeigen soll
         whichLineToChange = UnityEngine.Random.Range(1, 5);
-        
-        // ermittelt, welche der 4 Grundlinien für dieses Level benutzt wird
-        whichNormalCSV = UnityEngine.Random.Range(1, 5);
 
         // instanziiere die Prefabs
         if (whichLineToChange == 1)
@@ -95,11 +96,14 @@ public class LineController : MonoBehaviour {
         long elapsedTicks = endOfLvl.Ticks - startOfLvl.Ticks;
         TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
 
-        Debug.Log(elapsedSpan.TotalSeconds);
+        long elapsedTicksChange = endOfLvl.Ticks - startOfChange.Ticks;
+        TimeSpan elapsedSpanChange = new TimeSpan(elapsedTicksChange);
+
+        Debug.Log("gesamtes level: " + elapsedSpan.TotalSeconds + ", änderung: " + elapsedSpanChange.TotalSeconds);
 
         string path = Application.dataPath + "/testFile.txt";
-        string toBeSaved = DateTime.Now + ", Level: " + lvlCounter + ", time needed: " + elapsedSpan.TotalSeconds.ToString("F2") + ", Linienart-Nr: " + whichNormalCSV 
-            + ", Changed Linie: " + whichLineToChange + ", Button clicked: " + buttonText + Environment.NewLine;
+        string toBeSaved = DateTime.Now + ", Level: " + lvlCounter + ", start of level until click[s]: " + elapsedSpan.TotalSeconds.ToString("F2") + ", start of change until click[s]: " 
+            + elapsedSpanChange.TotalSeconds.ToString("F2") + ", Changed Linie: " + whichLineToChange + ", Button clicked: " + buttonText + Environment.NewLine;
         File.AppendAllText(path, toBeSaved);
     }
 
@@ -110,15 +114,16 @@ public class LineController : MonoBehaviour {
         if (change)
         {
             //subViewController.changeCsvFilename("Changed/" + whichNormalLine + "/csvChange" + lvlCounter + ".csv");
-            subViewController.changeCsvFilename("change/alleNeu/csvChange" + lvlCounter + ".csv");
+            subViewController.changeCsvFilename("change/newAll/csvChange" + orderOfCSVs[lvlCounter] + ".csv");
         } else
         {
-            subViewController.changeCsvFilename("csvNormal.csv");
+            subViewController.changeCsvFilename("csvNormal2.csv");
         }
         subViewController.initWindow(xCoord, yCoord, scaling);
         subViewController.setCameraForCanvas(mainCam);
         subViewController.initButton(buttonPosX, buttonPosY, buttonPosZ);
         subViewController.setButtonConnections(nextLvlButton, this, change, endButton);
+        subViewController.setLC(this);
         singleViewList.Add(subViewController);
         subViewController.transform.parent = ViewParent;
     }
@@ -131,5 +136,10 @@ public class LineController : MonoBehaviour {
         }
         singleViewList.Clear();
         singleViewList = new List<SingleView>();
+    }
+
+    public void setTimeOfChangestart(DateTime changestart)
+    {
+        startOfChange = changestart;
     }
 }

@@ -35,7 +35,7 @@ public class Buttons : MonoBehaviour {
         NextLvlButton nLBController = NextLvlButton.GetComponent<NextLvlButton>();
         Debug.Log("lvlCounter in Button: " + nLBController.lvlCounter);
         myLRC.calculateTimeNeeded(System.DateTime.Now, nLBController.lvlCounter, buttonText);
-        if (nLBController.lvlCounter < 4)
+        if (nLBController.lvlCounter < 34)
         {
             StartCoroutine(NextLvl());
             

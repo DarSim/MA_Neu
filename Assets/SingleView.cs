@@ -1,28 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SingleView : MonoBehaviour {
 
-    public int counterIndex_lr1, counterIndex_lr2, counterIndex_lr3, counterIndex_lr4, counterIndex_lr5, counterIndex_lr6, counterIndex_lr7 = 0;
+    public int counterIndex_lr1, counterIndex_lr2, counterIndex_lr3, counterIndex_lr4, counterIndex_lr5 = 0;
 
     public int counterData = 0;
 
-    public LineRenderer lr1, lr2, lr3, lr4, lr5, lr6, lr7;
+    public LineRenderer lr1, lr2, lr3, lr4, lr5;
 
     public List<float> csvfileData = new List<float>();
     public List<int> csvfileLR = new List<int>();
     public List<int> csvfileLR_startingPoints = new List<int>();
     public List<int> csvChangeThickness = new List<int>();
     public List<int> csvChangeColor = new List<int>();
+    public List<int> csvChangeStart = new List<int>();
 
     public GameObject EraserBar;
 
     float shiftX, shiftY, scalingFactor;
 
-    string csvFileName = "csvNormal.csv";
+    string csvFileName = "csvNormal2.csv";
 
-    int lr1_start, lr2_start, lr3_start, lr4_start, lr5_start, lr6_start, lr7_start = 0;
+    int lr1_start, lr2_start, lr3_start, lr4_start, lr5_start = 0;
 
     int intervalInternCounter = 0;
 
@@ -37,6 +39,8 @@ public class SingleView : MonoBehaviour {
     float multiWidth = 1.0f;
     AnimationCurve curve = new AnimationCurve();
 
+    public LineController myLC;
+
 
     void ReadLineTest(int line_index, List<string> line)
     {
@@ -45,6 +49,7 @@ public class SingleView : MonoBehaviour {
         csvfileLR_startingPoints.Add(int.Parse(line[2]));
         csvChangeThickness.Add(int.Parse(line[3]));
         csvChangeColor.Add(int.Parse(line[4]));
+        csvChangeStart.Add(int.Parse(line[5]));
     }
 
     void DrawNewLine2(int data_limit)
@@ -111,24 +116,6 @@ public class SingleView : MonoBehaviour {
                         lr5_start = csvfileLR_startingPoints[counterData];
 
                         break;
-
-                    case 6:
-                        drawLinesWithLR(lr6, counterIndex_lr6);
-
-                        counterIndex_lr6++;
-
-                        lr6_start = csvfileLR_startingPoints[counterData];
-
-                        break;
-
-                    case 7:
-                        drawLinesWithLR(lr7, counterIndex_lr7);
-
-                        counterIndex_lr7++;
-
-                        lr7_start = csvfileLR_startingPoints[counterData];
-
-                        break;
                 }
 
 
@@ -137,8 +124,11 @@ public class SingleView : MonoBehaviour {
                 checkRemoval(lr3_start, lr3);
                 checkRemoval(lr4_start, lr4);
                 checkRemoval(lr5_start, lr5);
-                checkRemoval(lr6_start, lr6);
-                checkRemoval(lr7_start, lr7);
+
+                if (counterData == csvChangeStart[counterData])
+                {
+                    myLC.setTimeOfChangestart(DateTime.Now);
+                }
 
                 counterData++;
             }
@@ -153,14 +143,6 @@ public class SingleView : MonoBehaviour {
     // Use this for initialization
     void Start () {
         fgCSVReader.LoadFromFile(Application.dataPath + "/CSVs/" + csvFileName, new fgCSVReader.ReadLineDelegate(ReadLineTest));
-        /*
-        lr1.useWorldSpace = true;
-        lr2.useWorldSpace = true;
-        lr3.useWorldSpace = true;
-        lr4.useWorldSpace = true;
-        lr5.useWorldSpace = true;
-        lr6.useWorldSpace = true;
-        */
         Debug.Log(csvFileName);
     }
 	
@@ -248,5 +230,10 @@ public class SingleView : MonoBehaviour {
                 removePointsFromLR(lr);
             }
         }
+    }
+
+    public void setLC(LineController lineController)
+    {
+        myLC = lineController;
     }
 }
