@@ -22,16 +22,20 @@ public class LineController : MonoBehaviour {
 
     public DateTime startOfLvl;
 
-    public int whichLineToChange, whichNormalCSV = 1;
+    public int whichLineToChange = 1;
 
     public Camera mainCam;
 
     public GameObject endButton;
 
+    public GameObject exportButton;
+
     public DateTime startOfChange = DateTime.MinValue;
 
     int[] orderOfCSVs = new int[] {13, 27, 8, 12, 5, 2, 15, 10, 29, 32, 6, 21, 16, 31, 7, 4, 28, 20, 24,
                                    30, 26, 25, 18, 14, 0, 35, 22, 1, 3, 17, 23, 34, 33, 19, 9, 11};
+
+    bool tooEarly = true;
 
 
     // Use this for initialization
@@ -55,34 +59,34 @@ public class LineController : MonoBehaviour {
         // instanziiere die Prefabs
         if (whichLineToChange == 1)
         {
-            instanciateLines(-13f, 2f, scaling, true, whichNormalCSV, lvlCounter, -120, 30, -1f);
+            instanciateLines(-13f, 2f, scaling, true, lvlCounter, -120, 34, -1f);
         } else
         {
-            instanciateLines(-13f, 2f, scaling, false, whichNormalCSV, lvlCounter, -120, 30, -1f);
+            instanciateLines(-13f, 2f, scaling, false, lvlCounter, -120, 34, -1f);
         }
 
         if (whichLineToChange == 2)
         {
-            instanciateLines(-13f, -4f, scaling, true, whichNormalCSV, lvlCounter, -120, -37, -1f);
+            instanciateLines(-13f, -4f, scaling, true, lvlCounter, -120, -32, -1f);
         } else
         {
-            instanciateLines(-13f, -4f, scaling, false, whichNormalCSV, lvlCounter, -120, -37, -1f);
+            instanciateLines(-13f, -4f, scaling, false, lvlCounter, -120, -32, -1f);
         }
 
         if (whichLineToChange == 3)
         {
-            instanciateLines(1f, 2f, scaling, true, whichNormalCSV, lvlCounter, 5, 30, -1f);
+            instanciateLines(1f, 2f, scaling, true, lvlCounter, 5, 34, -1f);
         } else
         {
-            instanciateLines(1f, 2f, scaling, false, whichNormalCSV, lvlCounter, 5, 30, -1f);
+            instanciateLines(1f, 2f, scaling, false, lvlCounter, 5, 34, -1f);
         }
 
         if (whichLineToChange == 4)
         {
-            instanciateLines(1f, -4f, scaling, true, whichNormalCSV, lvlCounter, 5, -37, -1f);
+            instanciateLines(1f, -4f, scaling, true, lvlCounter, 5, -32, -1f);
         } else
         {
-            instanciateLines(1f, -4f, scaling, false, whichNormalCSV, lvlCounter, 5, -37, -1f);
+            instanciateLines(1f, -4f, scaling, false, lvlCounter, 5, -32, -1f);
         }
 
         startOfLvl = DateTime.Now;
@@ -102,12 +106,12 @@ public class LineController : MonoBehaviour {
         Debug.Log("gesamtes level: " + elapsedSpan.TotalSeconds + ", änderung: " + elapsedSpanChange.TotalSeconds);
 
         string path = Application.dataPath + "/testFile.txt";
-        string toBeSaved = DateTime.Now + ", Level: " + lvlCounter + ", start of level until click[s]: " + elapsedSpan.TotalSeconds.ToString("F2") + ", start of change until click[s]: " 
-            + elapsedSpanChange.TotalSeconds.ToString("F2") + ", Changed Linie: " + whichLineToChange + ", Button clicked: " + buttonText + Environment.NewLine;
+        string toBeSaved = DateTime.Now + ", Level: " + lvlCounter + ", start of level until click[s]: " + elapsedSpan.TotalSeconds.ToString("F2") + ", too early: " + tooEarly 
+            + ", start of change until click[s]: " + elapsedSpanChange.TotalSeconds.ToString("F2") + ", Changed Linie: " + whichLineToChange + ", Button clicked: " + buttonText + Environment.NewLine;
         File.AppendAllText(path, toBeSaved);
     }
 
-    public void instanciateLines(float xCoord, float yCoord, float scaling, bool change, int whichNormalLine, int lvlCounter, float buttonPosX, float buttonPosY, float buttonPosZ)
+    public void instanciateLines(float xCoord, float yCoord, float scaling, bool change, int lvlCounter, float buttonPosX, float buttonPosY, float buttonPosZ)
     {
         GameObject subViewGO = Instantiate(SubViewPrefab) as GameObject;
         SingleView subViewController = subViewGO.GetComponent<SingleView>();
@@ -122,8 +126,8 @@ public class LineController : MonoBehaviour {
         subViewController.initWindow(xCoord, yCoord, scaling);
         subViewController.setCameraForCanvas(mainCam);
         subViewController.initButton(buttonPosX, buttonPosY, buttonPosZ);
-        subViewController.setButtonConnections(nextLvlButton, this, change, endButton);
         subViewController.setLC(this);
+        subViewController.setButtonConnections(nextLvlButton, change, endButton, exportButton);
         singleViewList.Add(subViewController);
         subViewController.transform.parent = ViewParent;
     }
@@ -141,5 +145,10 @@ public class LineController : MonoBehaviour {
     public void setTimeOfChangestart(DateTime changestart)
     {
         startOfChange = changestart;
+    }
+
+    public void setClickedTooEarly(bool _tooEarly)
+    {
+        tooEarly = _tooEarly;
     }
 }

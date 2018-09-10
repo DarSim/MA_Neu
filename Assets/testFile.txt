@@ -1,45 +1,3 @@
-1.4219857
-4.4247831
-7.2129754
-8.2072199
-20.1983821
-85.7406164
-16.7080452
-6.1059531
-7.0911115
-29.505915
-18.5195221
-31.8720929
-1.361338
-2.2021874
-49.7458678
-4.5764662
-1.548673
-2.973654
-3.6510848
-4.0402082
-4.403238
-51.5804941
-7.3673394
-12.8118904
-8.189999
-2.8325511
-9.1778686
-1.6580035
-8.0722283
-7.3621609
-11.4013234
-4.2174252
-27.2915925
-5.3658568
-7.9295161
-11.5364671
-5.6138276
-20.0643828
-6.3102356
-7.3914335
-2.2870737
-26.0824456
 Level: 0, time needed: 13.5688773
 Level: 2, time needed: 22.42532
 Level: 0, time needed: 3.1855344
@@ -412,3 +370,54 @@ Level: 3, time needed: 3.4676684
 9/9/2018 11:45:57 PM, Level: 0, time from start of level until click: 5.43, time from start of change until click: 5.36, Changed Linie: 1, Button clicked: richtig
 9/9/2018 11:46:37 PM, Level: 0, time from start of level until click: 2.06, time from start of change until click: 1.99, Changed Linie: 2, Button clicked: falsch
 9/9/2018 11:51:03 PM, Level: 0, time from start of level until click: 20.22, time from start of change until click: 5.01, Changed Linie: 4, Button clicked: richtig
+9/10/2018 8:29:17 PM, Level: 0, start of level until click[s]: 19.21, start of change until click[s]: 3.70, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:29:50 PM, Level: 1, start of level until click[s]: 22.76, start of change until click[s]: 8.62, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:31:17 PM, Level: 2, start of level until click[s]: 36.19, start of change until click[s]: 23.01, Changed Linie: 4, Button clicked: falsch
+9/10/2018 8:31:17 PM, Level: 2, start of level until click[s]: 36.20, start of change until click[s]: 23.02, Changed Linie: 4, Button clicked: falsch
+9/10/2018 8:31:17 PM, Level: 2, start of level until click[s]: 36.21, start of change until click[s]: 23.03, Changed Linie: 4, Button clicked: falsch
+9/10/2018 8:31:17 PM, Level: 2, start of level until click[s]: 36.21, start of change until click[s]: 23.03, Changed Linie: 4, Button clicked: richtig
+9/10/2018 8:32:17 PM, Level: 3, start of level until click[s]: 20.05, start of change until click[s]: 4.90, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:32:33 PM, Level: 4, start of level until click[s]: 7.03, start of change until click[s]: 6.78, Changed Linie: 4, Button clicked: falsch
+9/10/2018 8:35:02 PM, Level: 5, start of level until click[s]: 29.14, start of change until click[s]: 15.84, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:35:30 PM, Level: 6, start of level until click[s]: 23.90, start of change until click[s]: 6.54, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:35:50 PM, Level: 7, start of level until click[s]: 18.74, start of change until click[s]: 5.61, Changed Linie: 4, Button clicked: richtig
+9/10/2018 8:35:59 PM, Level: 8, start of level until click[s]: 6.94, start of change until click[s]: 6.74, Changed Linie: 2, Button clicked: falsch
+9/10/2018 8:36:17 PM, Level: 9, start of level until click[s]: 15.79, start of change until click[s]: 7.76, Changed Linie: 4, Button clicked: richtig
+9/10/2018 8:36:35 PM, Level: 10, start of level until click[s]: 15.65, start of change until click[s]: 8.54, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:36:51 PM, Level: 11, start of level until click[s]: 14.15, start of change until click[s]: 5.01, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:37:02 PM, Level: 12, start of level until click[s]: 9.43, start of change until click[s]: 5.35, Changed Linie: 4, Button clicked: richtig
+9/10/2018 8:37:17 PM, Level: 13, start of level until click[s]: 14.49, start of change until click[s]: 4.43, Changed Linie: 4, Button clicked: richtig
+9/10/2018 8:37:33 PM, Level: 14, start of level until click[s]: 14.06, start of change until click[s]: 6.97, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:37:48 PM, Level: 15, start of level until click[s]: 14.37, start of change until click[s]: 7.24, Changed Linie: 4, Button clicked: richtig
+9/10/2018 8:38:03 PM, Level: 16, start of level until click[s]: 13.66, start of change until click[s]: 3.61, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:38:16 PM, Level: 17, start of level until click[s]: 11.85, start of change until click[s]: 2.72, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:38:40 PM, Level: 18, start of level until click[s]: 22.30, start of change until click[s]: 8.23, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:38:54 PM, Level: 19, start of level until click[s]: 12.84, start of change until click[s]: 2.81, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:39:20 PM, Level: 20, start of level until click[s]: 18.03, start of change until click[s]: 4.00, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:39:43 PM, Level: 21, start of level until click[s]: 21.49, start of change until click[s]: 7.46, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:40:07 PM, Level: 22, start of level until click[s]: 9.38, start of change until click[s]: 5.35, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:40:27 PM, Level: 23, start of level until click[s]: 18.31, start of change until click[s]: 3.16, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:40:46 PM, Level: 24, start of level until click[s]: 17.70, start of change until click[s]: 6.57, Changed Linie: 4, Button clicked: richtig
+9/10/2018 8:41:03 PM, Level: 25, start of level until click[s]: 15.06, start of change until click[s]: 6.93, Changed Linie: 4, Button clicked: richtig
+9/10/2018 8:41:17 PM, Level: 26, start of level until click[s]: 11.21, start of change until click[s]: 2.19, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:41:35 PM, Level: 27, start of level until click[s]: 17.10, start of change until click[s]: 5.98, Changed Linie: 1, Button clicked: richtig
+9/10/2018 8:41:56 PM, Level: 28, start of level until click[s]: 18.70, start of change until click[s]: 7.56, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:42:05 PM, Level: 29, start of level until click[s]: 7.43, start of change until click[s]: 3.33, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:42:17 PM, Level: 30, start of level until click[s]: 11.07, start of change until click[s]: 1.99, Changed Linie: 1, Button clicked: richtig
+9/10/2018 8:42:29 PM, Level: 31, start of level until click[s]: 10.80, start of change until click[s]: 2.72, Changed Linie: 3, Button clicked: richtig
+9/10/2018 8:42:44 PM, Level: 32, start of level until click[s]: 13.50, start of change until click[s]: 5.43, Changed Linie: 1, Button clicked: richtig
+9/10/2018 8:42:52 PM, Level: 33, start of level until click[s]: 7.67, start of change until click[s]: 3.63, Changed Linie: 1, Button clicked: richtig
+9/10/2018 8:43:10 PM, Level: 34, start of level until click[s]: 16.63, start of change until click[s]: 3.53, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:45:26 PM, Level: 0, start of level until click[s]: 2.60, start of change until click[s]: 2.53, Changed Linie: 1, Button clicked: richtig
+9/10/2018 8:45:34 PM, Level: 1, start of level until click[s]: 1.59, start of change until click[s]: 1.48, Changed Linie: 1, Button clicked: falsch
+9/10/2018 8:49:07 PM, Level: 0, start of level until click[s]: 36.11, start of change until click[s]: 20.99, Changed Linie: 2, Button clicked: falsch
+9/10/2018 8:49:07 PM, Level: 0, start of level until click[s]: 36.14, start of change until click[s]: 21.02, Changed Linie: 2, Button clicked: richtig
+9/10/2018 8:49:07 PM, Level: 0, start of level until click[s]: 36.15, start of change until click[s]: 21.03, Changed Linie: 2, Button clicked: falsch
+9/10/2018 8:49:07 PM, Level: 0, start of level until click[s]: 36.16, start of change until click[s]: 21.04, Changed Linie: 2, Button clicked: falsch
+9/10/2018 10:57:30 PM, Level: 0, start of level until click[s]: 8.28, start of change until click[s]: 8.01, Changed Linie: 2, Button clicked: falsch
+9/10/2018 10:57:34 PM, Level: 1, start of level until click[s]: 1.76, start of change until click[s]: 1.60, Changed Linie: 1, Button clicked: falsch
+9/10/2018 10:57:46 PM, Level: 2, start of level until click[s]: 8.37, start of change until click[s]: 8.19, Changed Linie: 1, Button clicked: falsch
+9/10/2018 11:05:36 PM, Level: 0, start of level until click[s]: 2.22, too early: False, start of change until click[s]: 2.15, Changed Linie: 1, Button clicked: richtig
+9/10/2018 11:06:24 PM, Level: 1, start of level until click[s]: 17.70, too early: False, start of change until click[s]: 3.67, Changed Linie: 1, Button clicked: richtig
+9/10/2018 11:07:30 PM, Level: 0, start of level until click[s]: 1.84, too early: False, start of change until click[s]: 1.77, Changed Linie: 1, Button clicked: falsch
+9/10/2018 11:08:43 PM, Level: 0, start of level until click[s]: 3.56, too early: False, start of change until click[s]: 3.48, Changed Linie: 1, Button clicked: richtig

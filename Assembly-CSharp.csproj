@@ -64,15 +64,15 @@
     <Compile Include="Assets\Buttons.cs" />
     <Compile Include="Assets\CanvasButtons.cs" />
     <Compile Include="Assets\endTheGame.cs" />
+    <Compile Include="Assets\exportResult.cs" />
     <Compile Include="Assets\fgCSVReader.cs" />
     <Compile Include="Assets\LineController.cs" />
+    <Compile Include="Assets\NativeShare.cs" />
     <Compile Include="Assets\NextLvlButton.cs" />
     <Compile Include="Assets\SingleView.cs" />
     <None Include="Assets\testShader.shader" />
-    <None Include="Assets\sample_try2.txt" />
     <None Include="Assets\testShader2.shader" />
     <None Include="Assets\testFile.txt" />
-    <None Include="Assets\sample_try1.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/Daten/MA_git/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

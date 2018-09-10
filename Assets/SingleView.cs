@@ -130,6 +130,11 @@ public class SingleView : MonoBehaviour {
                     myLC.setTimeOfChangestart(DateTime.Now);
                 }
 
+                if(counterData > csvChangeStart[counterData])
+                {
+                    myLC.setClickedTooEarly(false);
+                }
+
                 counterData++;
             }
 
@@ -185,12 +190,13 @@ public class SingleView : MonoBehaviour {
         buttonCanvas.transform.position = new Vector3(xPos, yPos, zPos);
     }
 
-    public void setButtonConnections(GameObject nLB, LineController lineController, bool changed, GameObject endButton)
+    public void setButtonConnections(GameObject nLB, bool changed, GameObject endButton, GameObject exportResult)
     {
         Buttons buttonController = backgroundButton.GetComponent<Buttons>();
         buttonController.NextLvlButton = nLB;
-        buttonController.myLRC = lineController;
+        buttonController.myLRC = myLC;
         buttonController.endOfGameButton = endButton;
+        buttonController.exportResultsButton = exportResult;
 
         if (changed)
         {

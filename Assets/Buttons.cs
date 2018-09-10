@@ -18,6 +18,8 @@ public class Buttons : MonoBehaviour {
 
     public GameObject endOfGameButton;
 
+    public GameObject exportResultsButton;
+
 	// Use this for initialization
 	void Start () {
         t = GetComponentInChildren<Text>();
@@ -35,14 +37,19 @@ public class Buttons : MonoBehaviour {
         NextLvlButton nLBController = NextLvlButton.GetComponent<NextLvlButton>();
         Debug.Log("lvlCounter in Button: " + nLBController.lvlCounter);
         myLRC.calculateTimeNeeded(System.DateTime.Now, nLBController.lvlCounter, buttonText);
-        if (nLBController.lvlCounter < 34)
+        if (nLBController.lvlCounter < 35)
         {
-            StartCoroutine(NextLvl());
-            
+            //StartCoroutine(NextLvl());
+            NextLvlButton.SetActive(true);
+            Debug.Log("Cool Stuff");
+            myLRC.TimeScaleFactor = 0;
+
         } else
         {
             myLRC.clearTheStage();
             endOfGameButton.SetActive(true);
+            exportResultsButton.SetActive(true);
+
         }
     }
 
