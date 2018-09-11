@@ -396,8 +396,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Vielen Dank f\xFCr Ihre Teilnahme!\nZum Beenden des Tests klicken Sie einfach
-    in die Mitte des Bildschirms."
+  m_Text: "Vielen Dank f\xFCr Ihre Teilnahme!"
 --- !u!222 &243463276
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -41,6 +41,8 @@ public class SingleView : MonoBehaviour {
 
     public LineController myLC;
 
+    public bool changedLine = false;
+
 
     void ReadLineTest(int line_index, List<string> line)
     {
@@ -125,15 +127,7 @@ public class SingleView : MonoBehaviour {
                 checkRemoval(lr4_start, lr4);
                 checkRemoval(lr5_start, lr5);
 
-                if (counterData == csvChangeStart[counterData])
-                {
-                    myLC.setTimeOfChangestart(DateTime.Now);
-                }
-
-                if(counterData > csvChangeStart[counterData])
-                {
-                    myLC.setClickedTooEarly(false);
-                }
+                clickedTooEarly();
 
                 counterData++;
             }
@@ -241,5 +235,27 @@ public class SingleView : MonoBehaviour {
     public void setLC(LineController lineController)
     {
         myLC = lineController;
+    }
+
+    public void setChangedLine(bool changed)
+    {
+        changedLine = changed;
+    }
+
+    public void clickedTooEarly()
+    {
+        if (changedLine)
+        {
+            if (counterData == csvChangeStart[counterData])
+            {
+                myLC.setTimeOfChangestart(DateTime.Now);
+            }
+
+            if (counterData > csvChangeStart[counterData])
+            {
+                myLC.setClickedTooEarly(false);
+            }
+        }
+        
     }
 }
