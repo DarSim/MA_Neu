@@ -141,7 +141,8 @@ public class SingleView : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        fgCSVReader.LoadFromFile(Application.dataPath + "/CSVs/" + csvFileName, new fgCSVReader.ReadLineDelegate(ReadLineTest));
+        //fgCSVReader.LoadFromFile(Application.dataPath + "/CSVs/" + csvFileName, new fgCSVReader.ReadLineDelegate(ReadLineTest));
+        fgCSVReader.LoadFromFile(Application.streamingAssetsPath + "/" + csvFileName, new fgCSVReader.ReadLineDelegate(ReadLineTest));
         Debug.Log(csvFileName);
     }
 	

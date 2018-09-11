@@ -12,7 +12,7 @@ public class LineController : MonoBehaviour {
 
     // Bildschirmgrößen-Einstellungen
     public Transform ViewParent;
-    public float scaling = 1.5f;
+    public float scaling = 7.5f;
 
     // zur Erstellung der Prefabs
     public GameObject SubViewPrefab;
@@ -109,11 +109,16 @@ public class LineController : MonoBehaviour {
         long elapsedTicksChange = endOfLvl.Ticks - startOfChange.Ticks;
         TimeSpan elapsedSpanChange = new TimeSpan(elapsedTicksChange);
 
-        //string path = Application.persistentDataPath + "/testFile.txt";
-        string path = Application.dataPath + "/testFile.txt";
+        string path = Application.persistentDataPath + "/testFile.txt";
+        //string path = Application.dataPath + "/testFile.txt";
 
         string toBeSaved = DateTime.Now + ", Level: " + lvlCounter + ", start of level until click[s]: " + elapsedSpan.TotalSeconds.ToString("F2") + ", too early: " + tooEarly 
             + ", start of change until click[s]: " + elapsedSpanChange.TotalSeconds.ToString("F2") + ", Changed Linie: " + whichLineToChange + ", Button clicked: " + buttonText + Environment.NewLine;
+        if (lvlCounter == 35)
+        {
+            toBeSaved = toBeSaved + "-------------" + Environment.NewLine;
+        }
+
         File.AppendAllText(path, toBeSaved);
     }
 
@@ -125,7 +130,7 @@ public class LineController : MonoBehaviour {
         if (change)
         {
             //Änderung des Datei-Pfades, falls es sich um eine geänderte Linie handelt
-            subViewController.changeCsvFilename("change/newAll/csvChange" + orderOfCSVs[lvlCounter] + ".csv");
+            subViewController.changeCsvFilename("newAll/csvChange" + orderOfCSVs[lvlCounter] + ".csv");
             subViewController.setChangedLine(change);
         } 
         //Setzte Koordinaten innerhalb des Bildschirms

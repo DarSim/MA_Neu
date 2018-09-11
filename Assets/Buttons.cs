@@ -39,7 +39,6 @@ public class Buttons : MonoBehaviour {
         myLRC.calculateTimeNeeded(System.DateTime.Now, nLBController.lvlCounter, buttonText);
         if (nLBController.lvlCounter < 35)
         {
-            //StartCoroutine(NextLvl());
             NextLvlButton.SetActive(true);
             Debug.Log("Cool Stuff");
             myLRC.TimeScaleFactor = 0;
@@ -51,14 +50,6 @@ public class Buttons : MonoBehaviour {
             exportResultsButton.SetActive(true);
 
         }
-    }
-
-    IEnumerator NextLvl()
-    {
-        yield return new WaitForSeconds(0.5f);
-        NextLvlButton.SetActive(true);
-        Debug.Log("Cool Stuff");
-        myLRC.TimeScaleFactor = 0;
     }
 
     public void changedShownText()
