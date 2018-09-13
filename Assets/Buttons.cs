@@ -6,19 +6,14 @@ using UnityEngine.UI;
 public class Buttons : MonoBehaviour {
 
     Text t;
-    public GameObject NextLvlButton;
 
-    public SingleView[] singleViews;
+    public GameObject NextLvlButton;
+    public GameObject endOfGameButton;
 
     public LineController myLRC;
 
-    public bool changedLine;
-
     string buttonText = "falsch";
 
-    public GameObject endOfGameButton;
-
-    public GameObject exportResultsButton;
 
 	// Use this for initialization
 	void Start () {
@@ -33,25 +28,26 @@ public class Buttons : MonoBehaviour {
 
     public void changeTextWhenClicked()
     {
+        NextLvlButton nLBController = NextLvlButton.GetComponent<NextLvlButton>(); 
+        myLRC.calculateTimeNeeded(System.DateTime.Now, nLBController.lvlCounter, buttonText); 
         t.text = buttonText;
-        NextLvlButton nLBController = NextLvlButton.GetComponent<NextLvlButton>();
-        Debug.Log("lvlCounter in Button: " + nLBController.lvlCounter);
-        myLRC.calculateTimeNeeded(System.DateTime.Now, nLBController.lvlCounter, buttonText);
+
         if (nLBController.lvlCounter < 35)
         {
+            // aktiviere NextLevel Button und halte Zeit an im Spiel
             NextLvlButton.SetActive(true);
-            Debug.Log("Cool Stuff");
             myLRC.TimeScaleFactor = 0;
 
         } else
         {
+            // am Ende des Spiels: lösche alle Prefabs und zeige Ende Text (ist Button) an
             myLRC.clearTheStage();
             endOfGameButton.SetActive(true);
-            exportResultsButton.SetActive(true);
 
         }
     }
 
+    // falls es der Button der geänderten Linie ist
     public void changedShownText()
     {
         buttonText = "richtig";

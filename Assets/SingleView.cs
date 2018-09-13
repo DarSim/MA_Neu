@@ -5,12 +5,23 @@ using System;
 
 public class SingleView : MonoBehaviour {
 
-    public int counterIndex_lr1, counterIndex_lr2, counterIndex_lr3, counterIndex_lr4, counterIndex_lr5 = 0;
+    // FUNNY FAKT, den ich herausfinden musste: sobald eine Variable public deklariert wird
+    // ist der Initialwert, welchen man ihr im Skript gibt egal, da dieser Wert durch die
+    // eingabe im Inspektor überschrieben wird @ __ @
 
+    // ein paar counter
+    public int counterIndex_lr1, counterIndex_lr2, counterIndex_lr3, counterIndex_lr4, counterIndex_lr5 = 0;
     public int counterData = 0;
 
-    public LineRenderer lr1, lr2, lr3, lr4, lr5;
+    int lr1_start, lr2_start, lr3_start, lr4_start, lr5_start = 0;
+    int intervalInternCounter = 0;
 
+    float shiftX, shiftY, scalingFactor;
+    // multiplikationsfaktor für die breite eines linerenderers
+    float multiWidth = 1.0f;
+
+    // meine 10000 listen für jede spalte aus den csv dateien
+    // Spalten: x-koordinate / Linerenderer-Nr / startpunkt des LR / ist Linie dick? / ist linie farbig / start der änderung
     public List<float> csvfileData = new List<float>();
     public List<int> csvfileLR = new List<int>();
     public List<int> csvfileLR_startingPoints = new List<int>();
@@ -19,31 +30,24 @@ public class SingleView : MonoBehaviour {
     public List<int> csvChangeStart = new List<int>();
 
     public GameObject EraserBar;
+    public GameObject backgroundButton;
 
-    float shiftX, shiftY, scalingFactor;
+    public LineRenderer lr1, lr2, lr3, lr4, lr5;
 
     string csvFileName = "csvNormal2.csv";
 
-    int lr1_start, lr2_start, lr3_start, lr4_start, lr5_start = 0;
-
-    int intervalInternCounter = 0;
-
-    public GameObject backgroundButton;
-
     public Canvas buttonCanvas;
-
-    public Shader myShader;
 
     public Material redMaterial;
 
-    float multiWidth = 1.0f;
+    // seit neuestem muss die Dicke eines LR mithilfe einer Animationskurve geändert werden
     AnimationCurve curve = new AnimationCurve();
 
     public LineController myLC;
 
     public bool changedLine = false;
 
-
+    // lies alle spalten der csv datei
     void ReadLineTest(int line_index, List<string> line)
     {
         csvfileData.Add(float.Parse(line[0]));
@@ -54,11 +58,9 @@ public class SingleView : MonoBehaviour {
         csvChangeStart.Add(int.Parse(line[5]));
     }
 
+
     void DrawNewLine2(int data_limit)
     {
-        curve.AddKey(0.0f, 1.0f);
-        curve.AddKey(1.0f, 1.0f);
-
         if (intervalInternCounter < data_limit)
         {
             intervalInternCounter++;
@@ -68,6 +70,9 @@ public class SingleView : MonoBehaviour {
             {
                 //setze Datencounter auf 0 --> BEENDEN
                 counterData = 0;
+                // Klicke alle Buttons --> Auflösung welche die veränderte Kurve war und dieses Level
+                // wird 4 mal in die text-datei abgespeichert, somit weiß man, dass die Versuchsperson
+                // dieses level "nicht geschafft" hat
                 backgroundButton.GetComponent<Buttons>().changeTextWhenClicked();
             }
             else
@@ -141,9 +146,10 @@ public class SingleView : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //fgCSVReader.LoadFromFile(Application.dataPath + "/CSVs/" + csvFileName, new fgCSVReader.ReadLineDelegate(ReadLineTest));
         fgCSVReader.LoadFromFile(Application.streamingAssetsPath + "/" + csvFileName, new fgCSVReader.ReadLineDelegate(ReadLineTest));
-        Debug.Log(csvFileName);
+        // setzten der Punkte für die strichdicke
+        curve.AddKey(0.0f, 1.0f);
+        curve.AddKey(1.0f, 1.0f);
     }
 	
 	// Update is called once per frame
@@ -156,6 +162,9 @@ public class SingleView : MonoBehaviour {
         DrawNewLine2(1200);
     }
 
+    // löscht die Punnkte aus dem Linerenderer sobald das nächste Intervall beginnt
+    // indem alle Punkte in der Reihenfolge um eins nach oben verschoben werden und der 
+    // unterste Position-Punkt gelöscht wird
     public void removePointsFromLR(LineRenderer lr)
     {
         Vector3[] toBeMovedPos = new Vector3[lr.positionCount];
@@ -168,6 +177,8 @@ public class SingleView : MonoBehaviour {
         lr.positionCount--;
     }
 
+    // initialisiert das Fenster innerhalb des Gesamtbildschirms
+    // wird vom LineController Skript für jede Instanz des SingleView Prefabs aufgerufen
     public void initWindow(float _shiftX, float _shiftY, float _scalingFactor)
     {
         shiftX = _shiftX;
@@ -175,23 +186,28 @@ public class SingleView : MonoBehaviour {
         scalingFactor = _scalingFactor;
     }
 
+    // ändert die Variable csvFileName, wenn die Linie eine der Veränderungen anzeigen soll
     public void changeCsvFilename(string newFileName)
     {
         csvFileName = newFileName;
     }
 
+    // Übergabe der Position des Canvases das den Button enthält
+    // von LineController aufgerufen
     public void initButton(float xPos, float yPos, float zPos)
     {
         buttonCanvas.transform.position = new Vector3(xPos, yPos, zPos);
     }
 
-    public void setButtonConnections(GameObject nLB, bool changed, GameObject endButton, GameObject exportResult)
+    // Übergabe der Variablen vom LineController durch SingleView an das Buttons Skript
+    // dieser ein wenig umständliche Weg musste gegangen werden, da Objekte eines Prefabs
+    // nicht so einfach auf Objekte die nicht Teil des Prefabs sind zugreifen können
+    public void setButtonConnections(GameObject nLB, bool changed, GameObject endButton)
     {
         Buttons buttonController = backgroundButton.GetComponent<Buttons>();
         buttonController.NextLvlButton = nLB;
         buttonController.myLRC = myLC;
         buttonController.endOfGameButton = endButton;
-        buttonController.exportResultsButton = exportResult;
 
         if (changed)
         {
@@ -199,18 +215,24 @@ public class SingleView : MonoBehaviour {
         }
     }
 
+    // Kamera wird an Button übergeben
+    // dient der Darstellungsart des Buttons, da der Canvas ansonsten überproportional groß gewesen ist (Bug von Unity?)
     public void setCameraForCanvas(Camera mainCam)
     {
         buttonCanvas.worldCamera = mainCam;
     }
 
+    // Linien werden mit dieser Methode gezeichnet
+    // wird von der DrawNewLine2 für jeden LineRenderer aufgerufen
     public void drawLinesWithLR(LineRenderer lr, int counterIndex_lr)
     {
+        // wenn geänderte Line mit Strichdickenänderung
         if (csvChangeThickness[counterData] == 1)
         {
             lr.widthCurve = curve;
             lr.widthMultiplier = multiWidth;
         }
+        // wenn geänderte Linie mit Farbe
         if (csvChangeColor[counterData] == 1)
         {
             lr.material = redMaterial;
@@ -222,6 +244,7 @@ public class SingleView : MonoBehaviour {
         EraserBar.transform.position = new Vector3(intervalInternCounter * 0.01f - 6.0f + shiftX, 0.0f + shiftY, -0.001f) * scalingFactor;
     }
 
+    // schaut nach, ob wir uns bereit im nächsten intervall bewegen und es zeit ist die alte linie zu löschen
     public void checkRemoval(int lr_start, LineRenderer lr)
     {
         if (counterData > (lr_start + 1200))
@@ -233,16 +256,20 @@ public class SingleView : MonoBehaviour {
         }
     }
 
+    // Verbindung zum Linecontroller
     public void setLC(LineController lineController)
     {
         myLC = lineController;
     }
 
+    // setzt variable, ob diese linie "the chosen one" ist
     public void setChangedLine(bool changed)
     {
         changedLine = changed;
     }
 
+    // sobald die veränderung eintritt werden die beiden methoden des linecontroller skripts aufgerufen
+    // dient der zeiterfassung
     public void clickedTooEarly()
     {
         if (changedLine)

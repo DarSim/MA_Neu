@@ -21,7 +21,6 @@ public class LineController : MonoBehaviour {
     // Buttons auf die Zugegriffen werden muss
     public GameObject nextLvlButton;
     public GameObject endButton;
-    public GameObject exportButton;
 
     // welche der 4 Linien zeigt die Änderung an
     public int whichLineToChange = 1;
@@ -119,6 +118,7 @@ public class LineController : MonoBehaviour {
             toBeSaved = toBeSaved + "-------------" + Environment.NewLine;
         }
 
+        // mit AppendAll wird die Text Datei um jede Linie erweitert und nicht überschrieben
         File.AppendAllText(path, toBeSaved);
     }
 
@@ -131,18 +131,26 @@ public class LineController : MonoBehaviour {
         {
             //Änderung des Datei-Pfades, falls es sich um eine geänderte Linie handelt
             subViewController.changeCsvFilename("newAll/csvChange" + orderOfCSVs[lvlCounter] + ".csv");
+            // setzt bool variable in singleview, dient der Berechnung der Zeit zwischen Änderungsanzeige und Klick
             subViewController.setChangedLine(change);
         } 
         //Setzte Koordinaten innerhalb des Bildschirms
         subViewController.initWindow(xCoord, yCoord, scaling);
+        // Kameraübergabe
         subViewController.setCameraForCanvas(mainCam);
+        // Koordinaten für Button
         subViewController.initButton(buttonPosX, buttonPosY, buttonPosZ);
+        // stellt Verbindung zwischen SingleView und diesem LineController Skript her, damit SingleView auch auf Methoden von LC zugreifen kann
         subViewController.setLC(this);
-        subViewController.setButtonConnections(nextLvlButton, change, endButton, exportButton);
+        // einige Variablen für das Buttons Skript
+        subViewController.setButtonConnections(nextLvlButton, change, endButton);
+
+        // alle Instanzen der SingleViews werden in eine Liste geschrieben, damit sie nach jedem Level gelöscht werden können
         singleViewList.Add(subViewController);
         subViewController.transform.parent = ViewParent;
     }
 
+    // löscht alle Instanzen des Prefabs nach Beenden des Levels
     public void clearTheStage()
     {
         foreach (SingleView sv in singleViewList)
@@ -153,11 +161,14 @@ public class LineController : MonoBehaviour {
         singleViewList = new List<SingleView>();
     }
 
+    // setzt Zeitpunkt des Starts der Veränderung
+    // wird vom SingleView Skript, welches die veränderte Line anzeigt aufgerufen
     public void setTimeOfChangestart(DateTime changestart)
     {
         startOfChange = changestart;
     }
 
+    // falls zum Zeitpunkt des Klickens die Änderung noch nicht aufgetreten ist wird die Variable tooEarly auf true gesetzt 
     public void setClickedTooEarly(bool _tooEarly)
     {
         tooEarly = _tooEarly;

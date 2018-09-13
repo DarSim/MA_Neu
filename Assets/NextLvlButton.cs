@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NextLvlButton : MonoBehaviour {
 
-    public int lvlCounter = 1;
+    public int lvlCounter = 0;
     public LineController myLineController;
 
 	// Use this for initialization
@@ -18,18 +18,15 @@ public class NextLvlButton : MonoBehaviour {
 		
 	}
 
-    private void Awake()
-    {
-
-    }
-
     public void nextLvlClicked()
     {
-        Debug.Log("nextlvl clicked");
         lvlCounter++;
         Debug.Log("lvlcounter: " + lvlCounter);
+        // sobald man auf next level klickt geht die zeit wieder weiter
         myLineController.TimeScaleFactor = 2;
+        // nächstes level wird gestartet
         myLineController.startThoseLines(lvlCounter);
+        // dieser button wird wieder deaktiviert
         this.gameObject.SetActive(false);
 
         

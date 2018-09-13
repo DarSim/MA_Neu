@@ -14,6 +14,7 @@ public class endTheGame : MonoBehaviour {
 		
 	}
 
+    // Beendet die App
     public void endGameWhenClicked()
     {
         Application.Quit();
