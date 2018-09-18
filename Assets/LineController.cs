@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using UnityEngine.UI;
 
 public class LineController : MonoBehaviour {
 
@@ -40,6 +41,14 @@ public class LineController : MonoBehaviour {
     // solange Änderung noch nicht angezeigt worden ist ist tooEarly auf true
     bool tooEarly = true;
 
+    // Levelanzeige
+    public Text levelAnzeige;
+    // Text zur Statistikanzeige
+    public Text statistikAmEnde;
+
+    // counter wie viele Level "richtig" angeklickt wurden
+    int counterRichtig = 0;
+
 
     // Use this for initialization
     void Start () {
@@ -64,37 +73,42 @@ public class LineController : MonoBehaviour {
         // instanziiere die Prefabs
         if (whichLineToChange == 1)
         {
-            instanciateLines(-13f, 2f, scaling, true, lvlCounter, -120, 34, -1f);
+            instanciateLines(-13f, 2f, scaling, true, lvlCounter, -105, 20, -1f);
         } else
         {
-            instanciateLines(-13f, 2f, scaling, false, lvlCounter, -120, 34, -1f);
+            instanciateLines(-13f, 2f, scaling, false, lvlCounter, -105, 20, -1f);
         }
 
         if (whichLineToChange == 2)
         {
-            instanciateLines(-13f, -4f, scaling, true, lvlCounter, -120, -32, -1f);
+            instanciateLines(-13f, -4f, scaling, true, lvlCounter, -105, -32, -1f);
         } else
         {
-            instanciateLines(-13f, -4f, scaling, false, lvlCounter, -120, -32, -1f);
+            instanciateLines(-13f, -4f, scaling, false, lvlCounter, -105, -32, -1f);
         }
 
         if (whichLineToChange == 3)
         {
-            instanciateLines(1f, 2f, scaling, true, lvlCounter, 5, 34, -1f);
+            instanciateLines(1f, 2f, scaling, true, lvlCounter, 7.5f, 20, -1f);
         } else
         {
-            instanciateLines(1f, 2f, scaling, false, lvlCounter, 5, 34, -1f);
+            instanciateLines(1f, 2f, scaling, false, lvlCounter, 7.5f, 20, -1f);
         }
 
         if (whichLineToChange == 4)
         {
-            instanciateLines(1f, -4f, scaling, true, lvlCounter, 5, -32, -1f);
+            instanciateLines(1f, -4f, scaling, true, lvlCounter, 7.5f, -32, -1f);
         } else
         {
-            instanciateLines(1f, -4f, scaling, false, lvlCounter, 5, -32, -1f);
+            instanciateLines(1f, -4f, scaling, false, lvlCounter, 7.5f, -32, -1f);
         }
 
         startOfLvl = DateTime.Now;
+
+        int lvlCounterAnzeige = lvlCounter + 1;
+        levelAnzeige.text = "Level: " + lvlCounterAnzeige + "/36";
+
+        statistikAmEnde.text = "Sie haben " + counterRichtig + " von 36 richtige Linien angeklickt.";
     }
 
     // wird vom Buttons-Skript aufgerufen und berechnet die Zeitmessungsvariablen und speichert alles in die Datei testFile.txt
@@ -115,11 +129,16 @@ public class LineController : MonoBehaviour {
             + ", start of change until click[s]: " + elapsedSpanChange.TotalSeconds.ToString("F2") + ", Changed Linie: " + whichLineToChange + ", Button clicked: " + buttonText + Environment.NewLine;
         if (lvlCounter == 35)
         {
-            toBeSaved = toBeSaved + "-------------" + Environment.NewLine;
+            toBeSaved = toBeSaved + "insgesamt richtige: " + counterRichtig + Environment.NewLine + "-------------" + Environment.NewLine;
         }
 
         // mit AppendAll wird die Text Datei um jede Linie erweitert und nicht überschrieben
         File.AppendAllText(path, toBeSaved);
+
+        if(buttonText == "richtig")
+        {
+            counterRichtig++;
+        }
     }
 
     // instanziiert Linien und übergibt Informationen an SubView-Skript

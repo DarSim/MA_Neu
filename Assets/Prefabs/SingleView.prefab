@@ -359,10 +359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextLvlButton: {fileID: 0}
-  singleViews: []
-  myLRC: {fileID: 0}
-  changedLine: 0
   endOfGameButton: {fileID: 0}
+  myLRC: {fileID: 0}
 --- !u!114 &114236728768102308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -461,11 +459,6 @@ MonoBehaviour:
   counterIndex_lr4: 0
   counterIndex_lr5: 0
   counterData: 0
-  lr1: {fileID: 120590754693371910}
-  lr2: {fileID: 120948682596416110}
-  lr3: {fileID: 120458841377950220}
-  lr4: {fileID: 120387423645002080}
-  lr5: {fileID: 120597397520078896}
   csvfileData: []
   csvfileLR: 
   csvfileLR_startingPoints: 
@@ -474,10 +467,15 @@ MonoBehaviour:
   csvChangeStart: 
   EraserBar: {fileID: 1775361393814364}
   backgroundButton: {fileID: 1133912638939266}
+  lr1: {fileID: 120590754693371910}
+  lr2: {fileID: 120948682596416110}
+  lr3: {fileID: 120458841377950220}
+  lr4: {fileID: 120387423645002080}
+  lr5: {fileID: 120597397520078896}
   buttonCanvas: {fileID: 223836155934089134}
-  myShader: {fileID: 0}
   redMaterial: {fileID: 2100000, guid: c156019976fbb5f4dbcad6befb21f231, type: 2}
   myLC: {fileID: 0}
+  changedLine: 0
 --- !u!114 &114992506281761960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1051,7 +1049,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -59, y: 0}
-  m_SizeDelta: {x: 600, y: 350}
+  m_SizeDelta: {x: 550, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224458420211596230
 RectTransform:
@@ -1088,7 +1086,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 350}
+  m_SizeDelta: {x: 550, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224840976074209116
 RectTransform:
